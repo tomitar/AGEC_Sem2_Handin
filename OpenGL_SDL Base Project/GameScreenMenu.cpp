@@ -5,7 +5,6 @@ GameScreenMenu::GameScreenMenu()
 {
 }
 
-
 GameScreenMenu::~GameScreenMenu()
 {
 }

@@ -206,7 +206,7 @@ bool Update()
 	switch(e.type)
 	{
 		//Click the 'X' or press 'ESC' to quit.
-		case SDLK_ESCAPE:
+		case SDLK_q:
 			return true;
 		break;
 		

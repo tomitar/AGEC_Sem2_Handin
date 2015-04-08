@@ -4,6 +4,8 @@
 #include "GameScreenLevel2.h"
 #include "GameScreenLevel3.h"
 #include "GameScreenMenu.h"
+#include "GameScreenGameLevel1.h"
+#include "GameScreenGameLevel2.h"
 #include <string>
 #include <sstream>
 
@@ -55,6 +57,19 @@ void GameScreenManager::Update(float deltaTime, SDL_Event e)
 		case SDLK_3:
 			ChangeScreen(SCREEN_LEVEL3);
 			break;
+		case SDLK_RETURN:
+			switch (thisScreen)
+			{
+			case SCREEN_MENU:
+				ChangeScreen(SCREEN_GAMELEVEL1);
+				break;
+			case SCREEN_GAMELEVEL1:
+				ChangeScreen(SCREEN_GAMELEVEL2);
+				break;
+			case SCREEN_GAMELEVEL2:
+				break;
+			}
+			
 		}
 	}
 
@@ -87,6 +102,8 @@ void GameScreenManager::ChangeScreen(SCREENS newScreen)
 	GameScreenLevel2* tempScreen2;
 	GameScreenLevel3* tempScreen3;
 	GameScreenMenu* tempScreenMenu;
+	GameScreenGameLevel1* tempScreenLevel1;
+	GameScreenGameLevel2* tempScreenLevel2;
 
 	//Initialise the new screen.
 	switch(newScreen)
@@ -121,6 +138,20 @@ void GameScreenManager::ChangeScreen(SCREENS newScreen)
 			tempScreen3 = NULL;
 			thisScreen = SCREEN_LEVEL3;
 		break;
+
+		case SCREEN_GAMELEVEL1:
+			tempScreenLevel1 = new GameScreenGameLevel1();
+			mCurrentScreen = (GameScreen*)tempScreenLevel1;
+			tempScreenLevel1 = NULL;
+			thisScreen = SCREEN_GAMELEVEL1;
+		break;
+
+		case SCREEN_GAMELEVEL2:
+			tempScreenLevel2 = new GameScreenGameLevel2();
+			mCurrentScreen = (GameScreen*)tempScreenLevel2;
+			tempScreenLevel2 = NULL;
+			thisScreen = SCREEN_GAMELEVEL2;
+			break;
 
 		case SCREEN_GAMEOVER:
 		break;
@@ -162,36 +193,34 @@ void GameScreenManager::DrawHUD(string inString)
 	{
 		case SCREEN_LEVEL1:
 			line2 = "CURRENT SCREEN: TERRAIN & INPUT SHOWCASE";
-			for (int i = 0; i < line2.size(); i++)
-			{
-				glutBitmapCharacter(GLUT_BITMAP_9_BY_15, (int)line2[i]);
-			}
 		break;
 
 		case SCREEN_LEVEL2:
 			line2 = "CURRENT SCREEN: WIREFRAME & ANIMATION SHOWCASE";
-			for (int i = 0; i < line2.size(); i++)
-			{
-				glutBitmapCharacter(GLUT_BITMAP_9_BY_15, (int)line2[i]);
-			};
 		break;
 
 		case SCREEN_LEVEL3:
 			line2 = "CURRENT SCREEN: LEVEL3";
-			for (int i = 0; i < line2.size(); i++)
-			{
-				glutBitmapCharacter(GLUT_BITMAP_9_BY_15, (int)line2[i]);
-			};
 		break;
 
 		case SCREEN_MENU:
 			line2 = "CURRENT SCREEN: MENU / SPLASH";
-			for (int i = 0; i < line2.size(); i++)
-			{
-				glutBitmapCharacter(GLUT_BITMAP_9_BY_15, (int)line2[i]);
-			};
+		break;
+
+		case SCREEN_GAMELEVEL1:
+			line2 = "CURRENT SCREEN: GAME LEVEL ONE";
+		break;
+
+		case SCREEN_GAMELEVEL2:
+			line2 = "CURRENT SCREEN: GAME LEVEL TWO";
 		break;
 	}
+
+	for (int i = 0; i < line2.size(); i++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_9_BY_15, (int)line2[i]);
+	};
+
 	glDisable(GL_COLOR);
 	glEnable(GL_LIGHTING);
 
