@@ -16,7 +16,7 @@ using namespace::std;
 //-----------------------------------------------------------------------------------------------------
 //Local function prototypes.
 bool InitSDL();
-SDL_Surface* LoadSurface(string path);
+//SDL_Surface* LoadSurface(string path);
 void		 LoadMusic(string path);
 void CloseSDL();
 
@@ -44,7 +44,7 @@ int main(int argc, char* args[])
 	if(InitSDL())
 	{
 		//Set up the game screen manager - Start with Level1
-		gameScreenManager = new GameScreenManager(SCREEN_LEVEL2);
+		gameScreenManager = new GameScreenManager(SCREEN_MENU);
 		
 		//Start the music.
 		LoadMusic("Who_Likes_to_Party.wav");
@@ -115,34 +115,34 @@ bool InitSDL()
 
 //-----------------------------------------------------------------------------------------------------
 
-SDL_Surface* LoadSurface(string path)
-{
-	SDL_Surface* pLoadedSurface = NULL;
-	SDL_Surface* pOptimizedSurface = NULL;
-
-	//Load the image.
-	pLoadedSurface = IMG_Load(path.c_str());
-	if(pLoadedSurface == NULL)
-	{
-		cout << "Failed to load image. Error: " << SDL_GetError();
-		return NULL;
-	}
-	else
-	{
-		//Convert the surface to the screen format.
-		pOptimizedSurface = SDL_ConvertSurface( pLoadedSurface, gSurface->format, NULL);
-		if(pOptimizedSurface == NULL)
-		{
-			cout << "Unable to optimize the surface. Error: " << SDL_GetError();
-			return NULL;
-		}
-
-		//Free the memory used for the loaded surface.
-		SDL_FreeSurface(pLoadedSurface);
-	}
-
-	return pOptimizedSurface;
-}
+//SDL_Surface* LoadSurface(string path)
+//{
+//	SDL_Surface* pLoadedSurface = NULL;
+//	SDL_Surface* pOptimizedSurface = NULL;
+//
+//	//Load the image.
+//	pLoadedSurface = IMG_Load(path.c_str());
+//	if(pLoadedSurface == NULL)
+//	{
+//		cout << "Failed to load image. Error: " << SDL_GetError();
+//		return NULL;
+//	}
+//	else
+//	{
+//		//Convert the surface to the screen format.
+//		pOptimizedSurface = SDL_ConvertSurface( pLoadedSurface, gSurface->format, NULL);
+//		if(pOptimizedSurface == NULL)
+//		{
+//			cout << "Unable to optimize the surface. Error: " << SDL_GetError();
+//			return NULL;
+//		}
+//
+//		//Free the memory used for the loaded surface.
+//		SDL_FreeSurface(pLoadedSurface);
+//	}
+//
+//	return pOptimizedSurface;
+//}
 
 //-----------------------------------------------------------------------------------------------------
 

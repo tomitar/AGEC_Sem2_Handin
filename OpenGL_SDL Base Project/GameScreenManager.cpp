@@ -3,6 +3,7 @@
 #include "GameScreenLevel1.h"
 #include "GameScreenLevel2.h"
 #include "GameScreenLevel3.h"
+#include "GameScreenMenu.h"
 #include <string>
 #include <sstream>
 
@@ -85,6 +86,7 @@ void GameScreenManager::ChangeScreen(SCREENS newScreen)
 	GameScreenLevel1* tempScreen1;
 	GameScreenLevel2* tempScreen2;
 	GameScreenLevel3* tempScreen3;
+	GameScreenMenu* tempScreenMenu;
 
 	//Initialise the new screen.
 	switch(newScreen)
@@ -93,6 +95,10 @@ void GameScreenManager::ChangeScreen(SCREENS newScreen)
 		break;
 
 		case SCREEN_MENU:
+			tempScreenMenu = new GameScreenMenu();
+			mCurrentScreen = (GameScreen*)tempScreenMenu;
+			tempScreenMenu = NULL;
+			thisScreen = SCREEN_MENU;
 		break;
 
 		case SCREEN_LEVEL1:
@@ -172,6 +178,14 @@ void GameScreenManager::DrawHUD(string inString)
 
 		case SCREEN_LEVEL3:
 			line2 = "CURRENT SCREEN: LEVEL3";
+			for (int i = 0; i < line2.size(); i++)
+			{
+				glutBitmapCharacter(GLUT_BITMAP_9_BY_15, (int)line2[i]);
+			};
+		break;
+
+		case SCREEN_MENU:
+			line2 = "CURRENT SCREEN: MENU / SPLASH";
 			for (int i = 0; i < line2.size(); i++)
 			{
 				glutBitmapCharacter(GLUT_BITMAP_9_BY_15, (int)line2[i]);
