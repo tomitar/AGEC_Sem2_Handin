@@ -40,6 +40,7 @@ Camera* Camera::GetInstance()
 void Camera::initCamera()
 {
 	//Initialise all our variables
+	setIsStatic(true);
 
 	position.x = 0;
 	position.y = 155;
@@ -161,139 +162,77 @@ void Camera::move(float deltaTime)
 		movement.z /= vectorMagnitude;
 	}
 
-	// Calculate our value to keep the movement the same speed regardless of the framerate...
+	// Calculate our value to keep the movement the same speed regardless of the framerate
 	double framerateIndependentFactor = movementSpeed * deltaTime;
 
-	// .. and then apply it to our movement vector.
+	// apply it to our movement vector.
 	movement.x *= framerateIndependentFactor;
 	movement.y *= framerateIndependentFactor;
 	movement.z *= framerateIndependentFactor;
 
-	// Finally, apply the movement to our position
+	// apply the movement to our position
 	position.x += movement.x;
 	position.y += movement.y;
 	position.z += movement.z;
-
-	//Vector3D movement;
-
-	//double sinXRot = sin(rotation.x * DEG2RAD);
-	//double cosXRot = cos(rotation.x * DEG2RAD);
-
-	//double sinYRot = sin(rotation.y * DEG2RAD);
-	//double cosYRot = cos(rotation.y * DEG2RAD);
-
-	//double pitchLimitFactor = cosXRot; // This cancels out moving on the Z axis when we're looking up or down
-
-	//if (holdingForward)
-	//{
-	//	movementSpeed = movementSpeed + 1.0f;
-	//}
-
-	//if (holdingBack)
-	//{
-	//	movementSpeed = 0.0f;
-	//}
-
-	//if (holdingLeftS)
-	//{
-	//	movement.x = movement.x - cosYRot;
-	//	movement.z = movement.z - sinYRot;
-	//}
-
-	//if (holdingRightS)
-	//{
-	//	movement.x = movement.x + cosYRot;
-	//	movement.z = movement.z + sinYRot;
-	//}
-
-	//if (mouseMoved)
-	//{
-	//	handleMouseMove(mMoveX, mMoveY);
-	//	mouseMoved = false;
-	//}
-
-	////Calc forward movement
-	//movement.x = (movement.x + (sinYRot * pitchLimitFactor));
-	//movement.y = (movement.y - sinXRot);
-	//movement.z = (movement.z - (cosYRot * pitchLimitFactor));
-
-	//// Normalise our movement vector
-	//double vectorMagnitude = sqrt((movement.x*movement.x) + (movement.y*movement.y) + (movement.z*movement.z));
-	//if (vectorMagnitude != 0)
-	//{
-	//	movement.x /= vectorMagnitude;
-	//	movement.y /= vectorMagnitude;
-	//	movement.z /= vectorMagnitude;
-	//}
-
-	//// Calculate our value to keep the movement the same speed regardless of the framerate...
-	//double framerateIndependentFactor = movementSpeed * deltaTime;
-
-	//// .. and then apply it to our movement vector.
-	//movement.x *= framerateIndependentFactor;
-	//movement.y *= framerateIndependentFactor;
-	//movement.z *= framerateIndependentFactor;
-
-	//// Finally, apply the movement to our position
-	//position.x += movement.x;
-	//position.y += movement.y;
-	//position.z += movement.z;
 }
 
 void Camera::Update(float deltaTime, SDL_Event e)
 {
-	if (e.type == SDL_KEYDOWN)
+	if (!getIsStatic())
 	{
-		switch (e.key.keysym.sym)
+		if (e.type == SDL_KEYDOWN)
 		{
+			switch (e.key.keysym.sym)
+			{
 
-		case SDLK_a:
-			holdingLeftS = true;
-			break;
+			case SDLK_a:
+				holdingLeftS = true;
+				break;
 
-		case SDLK_d:
-			holdingRightS = true;
-			break;
+			case SDLK_d:
+				holdingRightS = true;
+				break;
 
-		case SDLK_w:
-			holdingForward = true;
-			break;
+			case SDLK_w:
+				holdingForward = true;
+				break;
 
-		case SDLK_s:
-			holdingBack = true;
-			break;
+			case SDLK_s:
+				holdingBack = true;
+				break;
 
+			}
 		}
-	}
-	else if (e.type == SDL_KEYUP)
-	{
-		switch (e.key.keysym.sym)
+		else if (e.type == SDL_KEYUP)
 		{
+			switch (e.key.keysym.sym)
+			{
 
-		case SDLK_a:
-			holdingLeftS = false;
-			break;
+			case SDLK_a:
+				holdingLeftS = false;
+				break;
 
-		case SDLK_d:
-			holdingRightS = false;
-			break;
+			case SDLK_d:
+				holdingRightS = false;
+				break;
 
-		case SDLK_w:
-			holdingForward = false;
-			break;
+			case SDLK_w:
+				holdingForward = false;
+				break;
 
-		case SDLK_s:
-			holdingBack = false;
-			break;
+			case SDLK_s:
+				holdingBack = false;
+				break;
 
+			}
+			std::cout << "Pos: " << position.x << ".x " << position.y << ".y " << position.z << ".z" << std::endl;
 		}
-		std::cout << "Pos: " << position.x << ".x " << position.y << ".y " << position.z << ".z" << std::endl;
-	}
-	else if (e.type == SDL_MOUSEMOTION)
-	{
-		mouseMoved = true;
-		mMoveX = e.motion.x;
-		mMoveY = e.motion.y;
+		else if (e.type == SDL_MOUSEMOTION)
+		{
+			mouseMoved = true;
+			mMoveX = e.motion.x;
+			mMoveY = e.motion.y;
+		}
 	}
 	move(deltaTime);
 }

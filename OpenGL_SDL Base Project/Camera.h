@@ -10,6 +10,10 @@ using namespace::std;
 class Camera
 {
 protected:
+	//isStatic is automatically initialised to true, 
+	//so it must be set as false after creation using the setter.
+	bool isStatic;
+
 	Vector3D position;
 	Vector3D rotation;
 	Vector3D speed;
@@ -44,12 +48,15 @@ public:
 	void Render();
 
 	//Setters
-	float getPitchSensitivity()            { return pitchSensitivity; }
 	void  setPitchSensitivity(float value) { pitchSensitivity = value; }
-	float getYawSensitivity()              { return yawSensitivity; }
 	void  setYawSensitivity(float value)   { yawSensitivity = value; }
+	void  setIsStatic(bool value)			{ isStatic = value; }
 
 	//Getters
+	float getPitchSensitivity()            { return pitchSensitivity; }
+	float getYawSensitivity()              { return yawSensitivity; }
+	bool getIsStatic()						{ return isStatic; }
+
 	Vector3D getPosition() const { return position; }
 	double getXPos()           const { return position.x; }
 	double getYPos()           const { return position.y; }
