@@ -136,7 +136,4 @@
     <Library Include="SDL\SDL2_mixer.lib" />
     <Library Include="SDL\SDL2_image.lib" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-  </ItemGroup>
 </Project>
