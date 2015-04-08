@@ -1,5 +1,3 @@
-//This camera class uses components and structure based on the tutorial found here:
-//http://r3dux.org/2012/12/a-c-camera-class-for-simple-opengl-fps-controls/
 
 #include "Camera.h"
 #include "Constants.h"
