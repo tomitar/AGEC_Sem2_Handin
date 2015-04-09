@@ -17,7 +17,7 @@ void GameScreenMenu::Render()
 {
 	GameScreen::Render();
 
-	/*glMatrixMode(GL_MODELVIEW);
+	glMatrixMode(GL_MODELVIEW);
 	glPushMatrix();
 	glLoadIdentity();
 	glMatrixMode(GL_PROJECTION);
@@ -39,7 +39,7 @@ void GameScreenMenu::Render()
 
 	glPopMatrix();
 	glMatrixMode(GL_MODELVIEW);
-	glPopMatrix();*/
+	glPopMatrix();
 }
 
 void GameScreenMenu::PrintStringToScreen(int xpos, int ypos, string inString)
