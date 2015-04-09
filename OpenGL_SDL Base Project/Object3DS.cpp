@@ -130,7 +130,7 @@ void Object3DS::update(float deltaTime, SDL_Event e, ANIMMODE animMode)
 			break;
 			}
 
-		case ANIM_CUSTOM:
+		/*case ANIM_CUSTOM:
 
 			if (e.type == SDL_KEYDOWN)
 			{
@@ -152,12 +152,12 @@ void Object3DS::update(float deltaTime, SDL_Event e, ANIMMODE animMode)
 					mPosition.x = (mPosition.x - framerateIndependentFactor);
 				break;
 				}
-			}
+			}*/
 	}
 	
 	//Manage input
 
-	if (e.type == SDL_KEYDOWN)
+	/*if (e.type == SDL_KEYDOWN)
 	{
 		switch (e.key.keysym.sym)
 		{
@@ -165,7 +165,7 @@ void Object3DS::update(float deltaTime, SDL_Event e, ANIMMODE animMode)
 				isVisible = !isVisible;
 			break;
 		}
-	}
+	}*/
 }
 
 void Object3DS::render(GLenum renderingMode)
