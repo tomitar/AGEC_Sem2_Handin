@@ -1,41 +1,8 @@
-﻿Build started 09/04/2015 19:00:03.
-     1>Project "D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\OpenGL_SDL Base Project.vcxproj" on node 2 (Rebuild target(s)).
+﻿Build started 09/04/2015 19:41:55.
+     1>Project "D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\OpenGL_SDL Base Project.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Program Files (x86)\Visual Studio\VC\bin\CL.exe /c /I"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\\SDL\image_include" /I"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\\SDL\mixer_include" /I"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\\SDL\include" /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp GameObject.cpp GameScreen.cpp GameScreenGameLevel1.cpp GameScreenGameLevel2.cpp GameScreenLevel1.cpp GameScreenLevel2.cpp GameScreenLevel3.cpp GameScreenManager.cpp GameScreenMenu.cpp ModelLoader.cpp Object3DS.cpp ObjectOBJ.cpp PlayerShip.cpp QuaternionMath.cpp Source.cpp Terrain.cpp Texture.cpp
-         Texture.cpp
-         Terrain.cpp
-         Source.cpp
-         QuaternionMath.cpp
-         PlayerShip.cpp
-         ObjectOBJ.cpp
-     1>d:\documents\work\programming\sample\opengl_sdl base project\opengl_sdl base project\objectobj.cpp(11): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 d:\program files (x86)\visual studio\vc\include\string.h(112) : see declaration of 'strcpy'
-         Object3DS.cpp
-     1>d:\documents\work\programming\sample\opengl_sdl base project\opengl_sdl base project\object3ds.cpp(12): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 d:\program files (x86)\visual studio\vc\include\string.h(112) : see declaration of 'strcpy'
-     1>d:\documents\work\programming\sample\opengl_sdl base project\opengl_sdl base project\object3ds.cpp(13): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 d:\program files (x86)\visual studio\vc\include\string.h(112) : see declaration of 'strcpy'
-         ModelLoader.cpp
-     1>d:\documents\work\programming\sample\opengl_sdl base project\opengl_sdl base project\modelloader.cpp(25): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 d:\program files (x86)\visual studio\vc\include\stdio.h(211) : see declaration of 'fopen'
-     1>d:\documents\work\programming\sample\opengl_sdl base project\opengl_sdl base project\modelloader.cpp(27): warning C4996: 'fileno': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _fileno. See online help for details.
-                 d:\program files (x86)\visual studio\vc\include\stdio.h(718) : see declaration of 'fileno'
-         GameScreenMenu.cpp
-     1>d:\documents\work\programming\sample\opengl_sdl base project\opengl_sdl base project\gamescreenmenu.cpp(49): warning C4018: '<' : signed/unsigned mismatch
-         GameScreenManager.cpp
-     1>d:\documents\work\programming\sample\opengl_sdl base project\opengl_sdl base project\gamescreenmanager.cpp(184): warning C4018: '<' : signed/unsigned mismatch
-     1>d:\documents\work\programming\sample\opengl_sdl base project\opengl_sdl base project\gamescreenmanager.cpp(219): warning C4018: '<' : signed/unsigned mismatch
-         GameScreenLevel3.cpp
-         GameScreenLevel2.cpp
-         GameScreenLevel1.cpp
-         GameScreenGameLevel2.cpp
-         GameScreenGameLevel1.cpp
+         D:\Program Files (x86)\Visual Studio\VC\bin\CL.exe /c /I"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\\SDL\image_include" /I"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\\SDL\mixer_include" /I"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\\SDL\include" /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameScreen.cpp
          GameScreen.cpp
-         GameObject.cpp
-         Camera.cpp
-     1>d:\documents\work\programming\sample\opengl_sdl base project\opengl_sdl base project\camera.h(56): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
-     1>d:\documents\work\programming\sample\opengl_sdl base project\opengl_sdl base project\camera.h(57): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
-         Generating Code...
        Link:
          D:\Program Files (x86)\Visual Studio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\Debug\OpenGL_SDL Base Project.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\\SDL" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\Debug\OpenGL_SDL Base Project.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\Debug\OpenGL_SDL Base Project.lib" /MACHINE:X86 Debug\Camera.obj
          Debug\GameObject.obj
@@ -50,7 +17,6 @@
          Debug\ModelLoader.obj
          Debug\Object3DS.obj
          Debug\ObjectOBJ.obj
-         Debug\PlayerShip.obj
          Debug\QuaternionMath.obj
          Debug\Source.obj
          Debug\Terrain.obj
@@ -62,8 +28,8 @@
          SDL\SDL2_mixer.lib
      1>Camera.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
          OpenGL_SDL Base Project.vcxproj -> D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\Debug\OpenGL_SDL Base Project.exe
-     1>Done Building Project "D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\OpenGL_SDL Base Project.vcxproj" (Rebuild target(s)).
+     1>Done Building Project "D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\OpenGL_SDL Base Project.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:06.34
+Time Elapsed 00:00:00.64
