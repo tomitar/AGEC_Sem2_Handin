@@ -1,9 +1,7 @@
 #include "GameObject.h"
 
-
 GameObject::GameObject(float startLifePoints, bool startIsDestructable)
 {
-	SetModel(Vector3D(0.0f, 0.0f, 0.0f), "Tree.3ds", true, "no texture");
 	SetIsDestructable(startIsDestructable);
 	SetLifePoints(startLifePoints);
 }
