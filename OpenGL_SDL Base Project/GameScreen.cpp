@@ -28,6 +28,12 @@ GameScreen::GameScreen()
 
 GameScreen::~GameScreen()
 {
+	/*for (int i = 0; i < 65; i++)
+	{
+		delete gameObjectArray[i];
+		ClearArrayLocation(i);
+	}*/
+	//delete gameObjectArray;
 }
 
 //--------------------------------------------------------------------------------------------------

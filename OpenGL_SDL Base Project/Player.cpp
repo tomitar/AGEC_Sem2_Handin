@@ -8,7 +8,7 @@ using namespace::std;
 
 Player::Player() : GameObject(100.0f, true)
 {
-	Player::SetModel(Vector3D(0.0f, 0.0f, 0.0f), "Player.3ds", true, "notexture.tga");
+	Player::SetModel(Vector3D(0.0f, 0.0f, 0.0f), "Tree_1.3ds", true, "notexture.tga");
 	cout << "Player Constructor" << endl;
 }
 
@@ -126,5 +126,5 @@ void Player::Move(float deltaTime)
 	position.y += movement.y;
 	position.z += movement.z;
 
-	cout << "player position: " << position.x << " " << position.y << " " << position.z;
+	cout << "player position: " << position.x << " " << position.y << " " << position.z << endl;
 }
