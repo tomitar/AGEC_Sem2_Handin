@@ -53,8 +53,8 @@ void GameScreenLevel2::Update(float deltaTime, SDL_Event e)
 {
 	GameScreen::Update(deltaTime, e);
 
-	m3DSModel->update(deltaTime, e, ANIM_SPIN);
-	m3DSModel1->update(deltaTime, e, ANIM_SPIN);
+//	m3DSModel->update(deltaTime, e, ANIM_SPIN);
+//	m3DSModel1->update(deltaTime, e, ANIM_SPIN);
 
 	mCurrentTime += deltaTime;
 }

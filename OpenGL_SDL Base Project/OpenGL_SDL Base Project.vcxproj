@@ -82,6 +82,7 @@
     <ClInclude Include="ModelLoader.h" />
     <ClInclude Include="Object3DS.h" />
     <ClInclude Include="ObjectOBJ.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="QuaternionMath.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Texture.h" />
@@ -100,6 +101,7 @@
     <ClCompile Include="ModelLoader.cpp" />
     <ClCompile Include="Object3DS.cpp" />
     <ClCompile Include="ObjectOBJ.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="QuaternionMath.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Terrain.cpp" />

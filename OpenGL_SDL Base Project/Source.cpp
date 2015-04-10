@@ -44,7 +44,7 @@ int main(int argc, char* args[])
 	if(InitSDL())
 	{
 		//Set up the game screen manager - Start with Level1
-		gameScreenManager = new GameScreenManager(SCREEN_GAMELEVEL1);
+		gameScreenManager = new GameScreenManager(SCREEN_MENU);
 		
 		//Start the music.
 		LoadMusic("Who_Likes_to_Party.wav");

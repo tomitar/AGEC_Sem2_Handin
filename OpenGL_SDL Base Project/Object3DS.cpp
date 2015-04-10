@@ -61,7 +61,7 @@ void Object3DS::loadTexture()
 	glDisable(GL_TEXTURE_2D);
 }
 
-void Object3DS::update(float deltaTime, SDL_Event e, ANIMMODE animMode)
+void Object3DS::update(float deltaTime, SDL_Event e, ANIMMODE animMode, Vector3D newPosition)
 {
 	double framerateIndependentFactor = movementSpeed * deltaTime;
 

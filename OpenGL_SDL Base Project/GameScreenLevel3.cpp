@@ -34,7 +34,7 @@ void GameScreenLevel3::Update(float deltaTime, SDL_Event e)
 {
 	GameScreen::Update(deltaTime, e);
 
-	m3DSModel->update(deltaTime, e, ANIM_STRAFE);
+	//m3DSModel->update(deltaTime, e, ANIM_STRAFE);
 
 	mCurrentTime += deltaTime;
 }
