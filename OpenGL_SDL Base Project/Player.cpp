@@ -9,7 +9,11 @@ using namespace::std;
 Player::Player() : GameObject(100.0f, true)
 {
 	Player::SetModel(Vector3D(0.0f, 0.0f, 0.0f), "Tree_1.3ds", true, "notexture.tga");
-	Player::SetMovementSpeed(2);
+	Player::SetMovementSpeed(15);
+	holdingDown = false;
+	holdingLeft = false;
+	holdingRight = false;
+	holdingUp = false;
 }
 
 
@@ -72,19 +76,19 @@ void Player::Move(float deltaTime)
 
 	if (holdingUp)
 	{
-		movement.z = movementSpeed*deltaTime;
+		movement.z = (movementSpeed*deltaTime)*(-1);
 	}
 	if (holdingDown)
 	{
-		movement.z = (movementSpeed*deltaTime)*(-1);
+		movement.z = movementSpeed*deltaTime;
 	}
 	if (holdingLeft)
 	{
-		movement.x = movementSpeed*deltaTime;
+		movement.x = (movementSpeed*deltaTime)*(-1);
 	}
 	if (holdingRight)
 	{
-		movement.z = (movementSpeed*deltaTime)*(-1);
+		movement.x = movementSpeed*deltaTime;
 	}
 
 	//double sinXRot = sin(rotation.x * DEG2RAD);
@@ -138,6 +142,8 @@ void Player::Move(float deltaTime)
 	//movement.y *= framerateIndependentFactor;
 	//movement.z *= framerateIndependentFactor;
 
+	cout << "Player Movement: " << movement.x << " " << movement.y << " " << movement.z << endl;
+
 	// apply the movement to our position
 	position.x += movement.x;
 	position.y += movement.y;
@@ -147,5 +153,6 @@ void Player::Move(float deltaTime)
 	movement.y = 0;
 	movement.z = 0;
 
-	cout << "player position: " << position.x << " " << position.y << " " << position.z << endl;
+	//debug
+	//cout << "player position: " << position.x << " " << position.y << " " << position.z << endl;
 }

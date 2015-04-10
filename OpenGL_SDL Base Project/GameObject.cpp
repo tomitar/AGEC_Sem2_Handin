@@ -8,6 +8,7 @@ GameObject::GameObject(float startLifePoints, bool startIsDestructable)
 	cout << "GAMEOBJECT constructor" << endl;
 	SetIsDestructable(startIsDestructable);
 	SetLifePoints(startLifePoints);
+	SetMovementSpeed(10);
 }
 
 GameObject::~GameObject()

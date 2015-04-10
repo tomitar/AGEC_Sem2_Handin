@@ -1,14 +1,8 @@
-﻿Build started 10/04/2015 14:36:19.
+﻿Build started 10/04/2015 21:06:49.
      1>Project "D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\OpenGL_SDL Base Project.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Program Files (x86)\Visual Studio\VC\bin\CL.exe /c /I"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\\SDL\image_include" /I"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\\SDL\mixer_include" /I"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\\SDL\include" /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Object3DS.cpp Player.cpp
+         D:\Program Files (x86)\Visual Studio\VC\bin\CL.exe /c /I"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\\SDL\image_include" /I"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\\SDL\mixer_include" /I"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\\SDL\include" /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Player.cpp
          Player.cpp
-         Object3DS.cpp
-     1>d:\documents\work\programming\sample\opengl_sdl base project\opengl_sdl base project\object3ds.cpp(12): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 d:\program files (x86)\visual studio\vc\include\string.h(112) : see declaration of 'strcpy'
-     1>d:\documents\work\programming\sample\opengl_sdl base project\opengl_sdl base project\object3ds.cpp(13): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 d:\program files (x86)\visual studio\vc\include\string.h(112) : see declaration of 'strcpy'
-         Generating Code...
        Link:
          D:\Program Files (x86)\Visual Studio\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\Debug\OpenGL_SDL Base Project.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\\SDL" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\Debug\OpenGL_SDL Base Project.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\Debug\OpenGL_SDL Base Project.lib" /MACHINE:X86 Debug\Camera.obj
          Debug\GameObject.obj
@@ -39,4 +33,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.25
+Time Elapsed 00:00:00.63
