@@ -166,6 +166,8 @@ void Object3DS::update(float deltaTime, SDL_Event e, ANIMMODE animMode, Vector3D
 			break;
 		}
 	}*/
+
+	mPosition = newPosition;
 }
 
 void Object3DS::render(GLenum renderingMode)
