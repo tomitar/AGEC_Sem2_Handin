@@ -11,5 +11,7 @@ public:
 	void		Update(float deltaTime, SDL_Event e);
 
 	Player* debugPlayer;
+
+	float gravity;
 };
 

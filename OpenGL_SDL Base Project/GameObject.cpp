@@ -51,5 +51,4 @@ void GameObject::Update(float deltaTime, SDL_Event e)
 		boundingSphere->Update(position);
 	}
 	objectModel->update(deltaTime, e, ANIM_CUSTOM, position);
-
 }

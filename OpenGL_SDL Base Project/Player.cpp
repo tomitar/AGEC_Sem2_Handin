@@ -67,7 +67,6 @@ void Player::Update(float deltaTime, SDL_Event e)
 	Move(deltaTime);
 
 	GameObject::Update(deltaTime, e);
-	
 }
 
 void Player::Move(float deltaTime)
@@ -142,13 +141,47 @@ void Player::Move(float deltaTime)
 	//movement.y *= framerateIndependentFactor;
 	//movement.z *= framerateIndependentFactor;
 
-	cout << "Player Movement: " << movement.x << " " << movement.y << " " << movement.z << endl;
+	//debug
+	//cout << "Player Pos" << position.x << " " << position.y << " " << position.z << endl;
 
 	// apply the movement to our position
-	position.x += movement.x;
-	position.y += movement.y;
-	position.z += movement.z;
+	//prevent the player from moving off the edge of the screen
+	//only applicable to level 1, put walls for more permanent fix
+	if (position.z > -40 && position.z < 33)
+	{
+		position.z += movement.z;
+	}		
+	else
+	{
+		if (position.z > -40)
+		{
+			position.z = position.z - 0.1f;
+		}
+		else
+		{
+			position.z = position.z + 0.1f;
+		}
+	}
+	//28
+	if (position.x > -28 && position.x < 28)
+	{
+		position.x += movement.x;
+	}
+	else
+	{
+		if (position.x > -28)
+		{
+			position.x = position.x - 0.1f;
+		}
+		else
+		{
+			position.x = position.x + 0.1f;
+		}
+	}
 
+//	if ((position.y > -40 || position.y < 33) || (movement.y > 0 && position.y > -40) || (movement.y < 0 && position.y >33))
+	position.y += movement.y;
+	
 	movement.x = 0;
 	movement.y = 0;
 	movement.z = 0;

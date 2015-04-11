@@ -9,9 +9,10 @@ lighting mLight;
 
 GameScreenGameLevel1::GameScreenGameLevel1()
 {
+	gravity = 0.5f;
 	cout << "GSLV1 constructor" << endl;
 	debugPlayer = new Player();
-
+	//AddObjectToArray(debugPlayer, 0);
 	mCamera->setPosition(Vector3D(0.0f, 80.0f, 0.0f));
 	mCamera->setRotation(Vector3D(90, 0, 0));
 	mCamera->setIsStatic(true);
