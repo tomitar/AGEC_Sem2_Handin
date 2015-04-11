@@ -11,7 +11,7 @@ class Object3DS
 public:
 	Object3DS(Vector3D	startPosition, string	modelFileName, bool visibility, string modelTextureName);
 	~Object3DS(){}
-	void update(float deltaTime, SDL_Event e, ANIMMODE animMode);
+	void update(float deltaTime, SDL_Event e, ANIMMODE animMode, Vector3D newPosition);
 	void render(GLenum renderingMode);
 
 	int loadModel();

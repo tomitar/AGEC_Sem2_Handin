@@ -4,6 +4,8 @@
 #include <SDL.h>
 #include "Texture.h"
 
+#include <iostream>
+
 Object3DS::Object3DS(Vector3D	startPosition, string	modelFileName, bool visibility, string modelTextureName)
 {
 	//start	position.
@@ -61,8 +63,11 @@ void Object3DS::loadTexture()
 	glDisable(GL_TEXTURE_2D);
 }
 
-void Object3DS::update(float deltaTime, SDL_Event e, ANIMMODE animMode)
+void Object3DS::update(float deltaTime, SDL_Event e, ANIMMODE animMode, Vector3D newPosition)
 {
+	//debug
+	//std::cout << newPosition.x << " " << newPosition.y << " " << newPosition.z << std::endl;
+	
 	double framerateIndependentFactor = movementSpeed * deltaTime;
 
 	//Handling constant movement
@@ -130,7 +135,7 @@ void Object3DS::update(float deltaTime, SDL_Event e, ANIMMODE animMode)
 			break;
 			}
 
-		case ANIM_CUSTOM:
+		/*case ANIM_CUSTOM:
 
 			if (e.type == SDL_KEYDOWN)
 			{
@@ -152,12 +157,12 @@ void Object3DS::update(float deltaTime, SDL_Event e, ANIMMODE animMode)
 					mPosition.x = (mPosition.x - framerateIndependentFactor);
 				break;
 				}
-			}
+			}*/
 	}
 	
 	//Manage input
 
-	if (e.type == SDL_KEYDOWN)
+	/*if (e.type == SDL_KEYDOWN)
 	{
 		switch (e.key.keysym.sym)
 		{
@@ -165,7 +170,9 @@ void Object3DS::update(float deltaTime, SDL_Event e, ANIMMODE animMode)
 				isVisible = !isVisible;
 			break;
 		}
-	}
+	}*/
+
+	mPosition = newPosition;
 }
 
 void Object3DS::render(GLenum renderingMode)

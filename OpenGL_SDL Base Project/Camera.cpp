@@ -1,4 +1,3 @@
-
 #include "Camera.h"
 #include "Constants.h"
 #include <SDL.h>

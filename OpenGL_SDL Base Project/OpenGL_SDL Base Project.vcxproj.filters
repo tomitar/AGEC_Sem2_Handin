@@ -57,9 +57,6 @@
     <ClInclude Include="GameScreenLevel3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerShip.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameScreenMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -70,6 +67,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameScreenGameLevel2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -113,9 +116,6 @@
     <ClCompile Include="GameScreenLevel3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerShip.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameScreenMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -126,6 +126,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameScreenGameLevel2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

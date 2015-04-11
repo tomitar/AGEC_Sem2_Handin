@@ -160,3 +160,10 @@ typedef struct
 
 	int id_texture;
 } obj_type_2, *obj_type_2_ptr;
+
+typedef enum CollisionType
+{
+	COLLISION_NONE = 0,
+	COLLISION_SPHERE,
+	COLLISION_CUBE
+};

@@ -18,16 +18,22 @@ GameScreen::GameScreen()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 	//initialise the gameobject array
-	for (int i = 0; i < 65; i++)
+	/*for (int i = 0; i < 65; i++)
 	{
 		ClearArrayLocation(i);
-	}
+	}*/
 }
 
 //--------------------------------------------------------------------------------------------------
 
 GameScreen::~GameScreen()
 {
+	/*for (int i = 0; i < 65; i++)
+	{
+		delete gameObjectArray[i];
+		ClearArrayLocation(i);
+	}*/
+	//delete gameObjectArray;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -51,5 +57,5 @@ void GameScreen::Update(float deltaTime, SDL_Event e)
 
 void GameScreen::ClearArrayLocation(int arrayIndex)
 {
-	gameObjectArray[arrayIndex] = NULL;
+	//gameObjectArray[arrayIndex] = NULL;
 }

@@ -51,6 +51,8 @@ public:
 	void  setPitchSensitivity(float value) { pitchSensitivity = value; }
 	void  setYawSensitivity(float value)   { yawSensitivity = value; }
 	void  setIsStatic(bool value)			{ isStatic = value; }
+	void  setPosition(Vector3D value)		{ position = value; }
+	void  setRotation(Vector3D value)		{ rotation = value; }
 
 	//Getters
 	float getPitchSensitivity()            { return pitchSensitivity; }

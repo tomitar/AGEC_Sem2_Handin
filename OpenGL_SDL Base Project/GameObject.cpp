@@ -1,11 +1,14 @@
 #include "GameObject.h"
 
+#include <iostream>
+using namespace::std;
 
-GameObject::GameObject(float startLifePoints, bool startIsDestructable)
+GameObject::GameObject(float startLifePoints, bool startIsDestructable, CollisionType collType)
 {
-	objectModel = new Object3DS(Vector3D(0.0f, 0.0f, 0.0f), "Tree.3ds", true, "no texture");
+	cout << "GAMEOBJECT constructor" << endl;
 	SetIsDestructable(startIsDestructable);
 	SetLifePoints(startLifePoints);
+	SetMovementSpeed(10);
 }
 
 GameObject::~GameObject()
@@ -17,25 +20,12 @@ void GameObject::Render()
 	objectModel->render(ANIM_CUSTOM);
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//Getters and Setters
-
-float GameObject::GetLifePoints()
+void GameObject::SetModel(Vector3D startpos, string name, bool vis, string texture)
 {
-	return lifePoints;
+	objectModel = new Object3DS(startpos, name, vis, texture);
 }
 
-bool GameObject::GetIsDestructable()
+void GameObject::Update(float deltaTime, SDL_Event e)
 {
-	return isDestructable;
-}
-
-void GameObject::SetLifePoints(float newLifePoints)
-{
-	lifePoints = newLifePoints;
-}
-
-void GameObject::SetIsDestructable(bool newDestructable)
-{
-	isDestructable = newDestructable;
+	objectModel->update(deltaTime, e, ANIM_CUSTOM, position);
 }

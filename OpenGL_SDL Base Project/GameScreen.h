@@ -5,6 +5,7 @@
 #include <string>
 #include "Commons.h"
 #include "GameObject.h"
+#include <vector>
 
 class Camera;
 
@@ -27,7 +28,7 @@ protected:
 
 private:
 	//Current max number of objects in a scene is 64.
-	GameObject* gameObjectArray[63];
+	std::vector<GameObject*> gameObjectArray;
 };
 
 
