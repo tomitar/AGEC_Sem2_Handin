@@ -44,6 +44,8 @@ public:
 	bool GetIsDestructable()	{ return isDestructable; }
 	bool GetIsStatic()			{ return isStatic; }
 
+	Sphere* GetBoundingSphere()	{ return boundingSphere; }
+
 
 	void SetPosition(Vector3D value)							{ position = value; }
 	void SetPosition(double xpos, double ypos, double zpos)		{ position = Vector3D(xpos, ypos, zpos); }
