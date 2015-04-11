@@ -1,6 +1,9 @@
 #pragma once
 #include "SDL.h"
 #include "Object3DS.h"
+#include "Collision.h"
+
+class Sphere;
 
 class GameObject
 {
@@ -20,7 +23,7 @@ protected:
 public:
 
 	//Engine compulsorys
-	GameObject(float startLifePoints, bool startIsDestructable);
+	GameObject(float startLifePoints, bool startIsDestructable, CollisionType collisionType);
 	~GameObject();
 	void Render();
 	void Update(float deltaTime, SDL_Event e);
@@ -59,5 +62,7 @@ public:
 
 private:
 	Object3DS* objectModel;
-};
 
+	Sphere* boundingSphere;
+	float radius;
+};
