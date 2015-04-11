@@ -55,7 +55,7 @@ void GameScreen::Update(float deltaTime, SDL_Event e)
 
 //--------------------------------------------------------------------------------------------------
 
-//void GameScreen::ClearArrayLocation(int arrayIndex)
-//{
-//	gameObjectArray[arrayIndex] = NULL;
-//}
+void GameScreen::ClearArrayLocation(int arrayIndex)
+{
+	//gameObjectArray[arrayIndex] = NULL;
+}

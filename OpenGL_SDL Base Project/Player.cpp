@@ -6,7 +6,7 @@
 
 using namespace::std;
 
-Player::Player() : GameObject(100.0f, true)
+Player::Player() : GameObject(100.0f, true, COLLISION_SPHERE)
 {
 	Player::SetModel(Vector3D(0.0f, 0.0f, 0.0f), "Tree_1.3ds", true, "notexture.tga");
 	Player::SetMovementSpeed(15);

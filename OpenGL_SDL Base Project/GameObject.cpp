@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace::std;
 
-GameObject::GameObject(float startLifePoints, bool startIsDestructable)
+GameObject::GameObject(float startLifePoints, bool startIsDestructable, CollisionType collType)
 {
 	cout << "GAMEOBJECT constructor" << endl;
 	SetIsDestructable(startIsDestructable);

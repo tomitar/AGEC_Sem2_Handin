@@ -11,6 +11,7 @@ GameScreenGameLevel1::GameScreenGameLevel1()
 {
 	cout << "GSLV1 constructor" << endl;
 	debugPlayer = new Player();
+
 	mCamera->setPosition(Vector3D(0.0f, 80.0f, 0.0f));
 	mCamera->setRotation(Vector3D(90, 0, 0));
 	mCamera->setIsStatic(true);
@@ -46,5 +47,4 @@ void GameScreenGameLevel1::Update(float deltaTime, SDL_Event e)
 {
 	GameScreen::Update(deltaTime, e);
 	debugPlayer->Update(deltaTime, e);
-
 }

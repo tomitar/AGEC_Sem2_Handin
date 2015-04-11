@@ -5,6 +5,7 @@
 #include <string>
 #include "Commons.h"
 #include "GameObject.h"
+#include <vector>
 
 class Camera;
 
@@ -18,16 +19,16 @@ public:
 	virtual void Update(float deltaTime, SDL_Event e);
 
 	//Getters and setters
-	/*GameObject* GetObjectFromArray(int arrayIndex);
+	GameObject* GetObjectFromArray(int arrayIndex);
 	void ClearArrayLocation(int arrayIndex);
-	void AddObjectToArray(GameObject* objectReference, int arrayIndex);*/
+	void AddObjectToArray(GameObject* objectReference, int arrayIndex);
 
 protected:
 	Camera* mCamera;
 
 private:
 	//Current max number of objects in a scene is 64.
-	//GameObject* gameObjectArray[63];
+	std::vector<GameObject*> gameObjectArray;
 };
 
 
