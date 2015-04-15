@@ -23,12 +23,16 @@ public:
 	void ClearArrayLocation(int arrayIndex);
 	void AddObjectToArray(GameObject* objectReference, int arrayIndex);
 
+	float GetGravityVal()			{ return gravityVal; }
+	void SetGravityVal(float value)	{ gravityVal = value; }
+
 protected:
 	Camera* mCamera;
 
 private:
 	//Current max number of objects in a scene is 64.
 	std::vector<GameObject*> gameObjectArray;
+	float gravityVal;
 };
 
 

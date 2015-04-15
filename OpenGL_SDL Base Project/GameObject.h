@@ -19,6 +19,7 @@ protected:
 	float lifePoints;
 	bool isDestructable;
 	bool isStatic;
+	bool hasPhysics;
 
 public:
 
@@ -43,6 +44,7 @@ public:
 	float GetLifePoints()		{ return lifePoints; }
 	bool GetIsDestructable()	{ return isDestructable; }
 	bool GetIsStatic()			{ return isStatic; }
+	bool HasPhysics()			{ return hasPhysics; }
 
 	Sphere* GetBoundingSphere()	{ return boundingSphere; }
 
@@ -61,6 +63,7 @@ public:
 	void SetLifePoints(float value)								{ lifePoints = value; }
 	void SetIsDestructable(bool value)							{ isDestructable = value; }
 	void SetIsStatic(bool value)								{ isStatic = value; }
+	void SetHasPhysics(bool value)								{ hasPhysics = value; }
 
 private:
 	Object3DS* objectModel;

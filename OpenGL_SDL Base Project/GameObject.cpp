@@ -12,6 +12,7 @@ GameObject::GameObject(float startLifePoints, bool startIsDestructable, Collisio
 	SetIsDestructable(startIsDestructable);
 	SetLifePoints(startLifePoints);
 	SetMovementSpeed(10);
+	SetHasPhysics(false);
 
 	switch (collType)
 	{
