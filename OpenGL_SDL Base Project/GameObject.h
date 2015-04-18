@@ -44,7 +44,7 @@ public:
 	float GetLifePoints()		{ return lifePoints; }
 	bool GetIsDestructable()	{ return isDestructable; }
 	bool GetIsStatic()			{ return isStatic; }
-	bool HasPhysics()			{ return hasPhysics; }
+	bool GetHasPhysics()			{ return hasPhysics; }
 
 	Sphere* GetBoundingSphere()	{ return boundingSphere; }
 

@@ -1,5 +1,5 @@
 #include "GameObject.h"
-
+#include "Constants.h"
 #include <iostream>
 using namespace::std;
 
@@ -46,9 +46,17 @@ void GameObject::SetModel(Vector3D startpos, string name, bool vis, string textu
 
 void GameObject::Update(float deltaTime, SDL_Event e)
 {
+	if (hasPhysics = true)
+	{
+		float constGravity = GRAVITY;
+		constGravity = constGravity*deltaTime;
+		speed.z = speed.z + (constGravity);
+	}
+
 	position.x += speed.x;
 	position.y += speed.y;
 	position.z += speed.z;
+
 	if (boundingSphere != NULL)
 	{
 		boundingSphere->SetCollided(false);
