@@ -14,7 +14,11 @@ Dodgeball::~Dodgeball()
 {
 }
 
-Dodgeball::Update(float deltaTime, SDL_Event e)
+void Dodgeball::Update(float deltaTime, SDL_Event e)
 {
-
+	//bounce inelastic
+	if (GetPosition().z == 0.0f)
+	{
+		SetSpeed(Vector3D(GetSpeed().x, GetSpeed().y, (GetSpeed().z*-1.0f)));
+	}
 }

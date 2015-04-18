@@ -9,7 +9,6 @@ lighting mLight;
 
 GameScreenGameLevel1::GameScreenGameLevel1()
 {
-	gravity = 0.5f;
 	cout << "GSLV1 constructor" << endl;
 	debugPlayer = new Player();
 	//AddObjectToArray(debugPlayer, 0);
