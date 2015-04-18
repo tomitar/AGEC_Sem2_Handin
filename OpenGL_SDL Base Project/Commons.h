@@ -1,6 +1,7 @@
 #pragma once
 #define MAX_VERTICES 15000
 #define MAX_POLYGONS 15000
+#include <stdlib.h>
 
 float RandomFloat(float a, float b)
 {
