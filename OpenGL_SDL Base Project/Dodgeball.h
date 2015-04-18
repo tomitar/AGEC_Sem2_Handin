@@ -5,4 +5,6 @@ class Dodgeball : GameObject
 public:
 	Dodgeball();
 	~Dodgeball();
+	void Update(float deltaTime, SDL_Event e);
+	void Render();
 };

@@ -12,7 +12,7 @@ Camera::Camera()
 
 	initCamera();
 
-	windowMidX = SCREEN_WIDTH / 2.0f;
+	windowMidX = SCREEN_WIDTH / 2.0f; 
 	windowMidY = SCREEN_HEIGHT / 2.0f;
 
 	mouseMoved = false;

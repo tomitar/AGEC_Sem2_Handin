@@ -90,60 +90,6 @@ void Player::Move(float deltaTime)
 		movement.x = movementSpeed*deltaTime;
 	}
 
-	//double sinXRot = sin(rotation.x * DEG2RAD);
-	//double cosXRot = cos(rotation.x * DEG2RAD);
-
-	//double sinYRot = sin(rotation.y * DEG2RAD);
-	//double cosYRot = cos(rotation.y * DEG2RAD);
-
-	//double pitchLimitFactor = cosXRot; // This cancels out moving on the Z axis when we're looking up or down
-
-	//if (holdingUp)
-	//{
-	//	movement.x = (movement.x + (sinYRot * pitchLimitFactor));
-	//	movement.y = (movement.y - sinXRot);
-	//	movement.z = (movement.z - (cosYRot * pitchLimitFactor));
-	//}
-
-	//if (holdingDown)
-	//{
-	//	movement.x = (movement.x - (sinYRot * pitchLimitFactor));
-	//	movement.y = (movement.y + sinXRot);
-	//	movement.z = (movement.z + (cosYRot * pitchLimitFactor));
-	//}
-
-	//if (holdingLeft)
-	//{
-	//	movement.x = movement.x - cosYRot;
-	//	movement.z = movement.z - sinYRot;
-	//}
-
-	//if (holdingRight)
-	//{
-	//	movement.x = movement.x + cosYRot;
-	//	movement.z = movement.z + sinYRot;
-	//}
-
-	//// Normalise our movement vector
-	//double vectorMagnitude = sqrt((movement.x*movement.x) + (movement.y*movement.y) + (movement.z*movement.z));
-	//if (vectorMagnitude != 0)
-	//{
-	//	movement.x /= vectorMagnitude;
-	//	movement.y /= vectorMagnitude;
-	//	movement.z /= vectorMagnitude;
-	//}
-
-	//// Calculate our value to keep the movement the same speed regardless of the framerate
-	//double framerateIndependentFactor = movementSpeed * deltaTime;
-
-	//// apply it to our movement vector.
-	//movement.x *= framerateIndependentFactor;
-	//movement.y *= framerateIndependentFactor;
-	//movement.z *= framerateIndependentFactor;
-
-	//debug
-	//cout << "Player Pos" << position.x << " " << position.y << " " << position.z << endl;
-
 	// apply the movement to our position
 	//prevent the player from moving off the edge of the screen
 	//only applicable to level 1, put walls for more permanent fix
@@ -162,7 +108,7 @@ void Player::Move(float deltaTime)
 			position.z = position.z + 0.1f;
 		}
 	}
-	//28
+	
 	if (position.x > -28 && position.x < 28)
 	{
 		position.x += movement.x;
@@ -185,7 +131,4 @@ void Player::Move(float deltaTime)
 	movement.x = 0;
 	movement.y = 0;
 	movement.z = 0;
-
-	//debug
-	//cout << "player position: " << position.x << " " << position.y << " " << position.z << endl;
 }

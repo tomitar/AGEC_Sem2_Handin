@@ -46,6 +46,9 @@ void GameObject::SetModel(Vector3D startpos, string name, bool vis, string textu
 
 void GameObject::Update(float deltaTime, SDL_Event e)
 {
+	position.x += speed.x;
+	position.y += speed.y;
+	position.z += speed.z;
 	if (boundingSphere != NULL)
 	{
 		boundingSphere->SetCollided(false);
