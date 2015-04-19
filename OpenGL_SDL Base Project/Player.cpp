@@ -14,6 +14,7 @@ Player::Player() : GameObject(100.0f, true, COLLISION_SPHERE)
 	holdingLeft = false;
 	holdingRight = false;
 	holdingUp = false;
+	SetHasPhysics(false);
 }
 
 

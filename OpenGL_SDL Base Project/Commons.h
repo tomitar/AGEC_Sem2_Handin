@@ -1,15 +1,15 @@
 #pragma once
 #define MAX_VERTICES 15000
 #define MAX_POLYGONS 15000
-#include <stdlib.h>
+//#include <stdlib.h>
 
-float RandomFloat(float a, float b)
-{
-	float random = ((float)rand() / (float)RAND_MAX);
-	float diff = b - a;
-	float r = random*diff;
-	return a + r;
-}
+//float RandomFloat(float a, float b)
+//{
+//	float random = ((float)rand() / (float)RAND_MAX);
+//	float diff = b - a;
+//	float r = random*diff;
+//	return a + r;
+//}
 
 struct lighting{
 	float ambient[4];
