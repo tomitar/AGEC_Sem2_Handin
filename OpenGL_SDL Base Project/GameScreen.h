@@ -30,7 +30,6 @@ protected:
 	Camera* mCamera;
 
 private:
-	//Current max number of objects in a scene is 64.
 	std::vector<GameObject*> gameObjectArray;
 	float gravityVal;
 };

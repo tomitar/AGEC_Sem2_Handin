@@ -3,7 +3,6 @@
 #include "Player.h"
 #include "Camera.h"
 
-#include <iostream>
 using namespace::std;
 lighting mLight;
 
@@ -34,8 +33,7 @@ void GameScreenGameLevel1::Render()
 {
 	GameScreen::Render();
 	float light_pos[] = { 0.0f, 50.0f, 150.0f, 1.0f };
-	//float light_pos[] = { 0.0f, 20.0f, 0.0f, 1.0f };
-
+	
 	glLightfv(GL_LIGHT0, GL_AMBIENT, mLight.ambient);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, mLight.diffuse);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, mLight.specular);
@@ -47,4 +45,8 @@ void GameScreenGameLevel1::Update(float deltaTime, SDL_Event e)
 {
 	GameScreen::Update(deltaTime, e);
 	debugPlayer->Update(deltaTime, e);
+	if (DodgeballArray.size() < 30)
+	{
+		DodgeballArray.push_back(new Dodgeball());
+	}
 }

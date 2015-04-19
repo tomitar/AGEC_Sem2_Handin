@@ -55,8 +55,8 @@ public:
 	void  setRotation(Vector3D value)		{ rotation = value; }
 
 	//Getters
-	float getPitchSensitivity()            { return pitchSensitivity; }
-	float getYawSensitivity()              { return yawSensitivity; }
+	double getPitchSensitivity()            { return pitchSensitivity; }
+	double getYawSensitivity()              { return yawSensitivity; }
 	bool getIsStatic()						{ return isStatic; }
 
 	Vector3D getPosition() const { return position; }
