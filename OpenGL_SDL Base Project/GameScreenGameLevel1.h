@@ -1,6 +1,7 @@
 #pragma once
 #include "GameScreen.h"
 #include "Player.h"
+#include "Dodgeball.h"
 
 class GameScreenGameLevel1 : GameScreen
 {
@@ -11,5 +12,6 @@ public:
 	void		Update(float deltaTime, SDL_Event e);
 
 	Player* debugPlayer;
+	Dodgeball* debugDodgeball;
 };
 

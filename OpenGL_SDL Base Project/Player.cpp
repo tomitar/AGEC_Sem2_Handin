@@ -3,7 +3,6 @@
 #include <iostream>
 #include <string>
 
-
 using namespace::std;
 
 Player::Player() : GameObject(100.0f, true, COLLISION_SPHERE)

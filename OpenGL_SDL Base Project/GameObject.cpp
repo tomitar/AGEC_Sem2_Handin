@@ -46,16 +46,16 @@ void GameObject::SetModel(Vector3D startpos, string name, bool vis, string textu
 
 void GameObject::Update(float deltaTime, SDL_Event e)
 {
-	if (hasPhysics = true)
+	if (hasPhysics == true)
 	{
 		float constGravity = GRAVITY;
 		constGravity = constGravity*deltaTime;
 		speed.y = speed.y - (constGravity);
 	}
 
-	/*position.x += speed.x;
+	position.x += speed.x;
 	position.y += speed.y;
-	position.z += speed.z;*/
+	position.z += speed.z;
 
 	if (boundingSphere != NULL)
 	{
