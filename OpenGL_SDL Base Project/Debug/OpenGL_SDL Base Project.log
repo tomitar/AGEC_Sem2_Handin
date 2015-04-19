@@ -1,4 +1,4 @@
-﻿Build started 19/04/2015 20:58:48.
+﻿Build started 20/04/2015 00:05:17.
      1>Project "D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\OpenGL_SDL Base Project.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          D:\Program Files (x86)\Visual Studio\VC\bin\CL.exe /c /I"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\\SDL\image_include" /I"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\\SDL\mixer_include" /I"D:\Documents\Work\Programming\Sample\OpenGL_SDL Base Project\OpenGL_SDL Base Project\\SDL\include" /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Dodgeball.cpp
@@ -34,4 +34,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.64
+Time Elapsed 00:00:00.61
