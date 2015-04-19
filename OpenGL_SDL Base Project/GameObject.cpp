@@ -50,7 +50,7 @@ void GameObject::Update(float deltaTime, SDL_Event e)
 	{
 		float constGravity = GRAVITY;
 		constGravity = constGravity*deltaTime;
-		speed.y = speed.y + (constGravity);
+		speed.y = speed.y - (constGravity);
 	}
 
 	/*position.x += speed.x;
