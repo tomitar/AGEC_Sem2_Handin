@@ -71,11 +71,11 @@ void GameScreenGameLevel1::Update(float deltaTime, SDL_Event e)
 
 		Collision::SphereSphereCollision(theDodgeballs[i]->GetBoundingSphere(), debugPlayer->GetBoundingSphere());
 
-		if (theDodgeballs[i]->GetBoundingSphere()->GetCollided == true)
+		if (theDodgeballs[i]->GetBoundingSphere()->GetCollided() == true)
 		{
 			delete theDodgeballs[i];
 			theDodgeballs[i] = new Dodgeball();
-			debugPlayer->
+			debugPlayer->TakeDamage(20);
 		}
 	}
 }
