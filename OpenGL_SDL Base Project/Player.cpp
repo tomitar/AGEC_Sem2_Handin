@@ -14,6 +14,8 @@ Player::Player() : GameObject(100.0f, true, COLLISION_SPHERE)
 	holdingRight = false;
 	holdingUp = false;
 	SetHasPhysics(false);
+	SetLifePoints(10);
+	SetLives(3);
 }
 
 
@@ -131,6 +133,16 @@ void Player::Move(float deltaTime)
 	movement.x = 0;
 	movement.y = 0;
 	movement.z = 0;
+}
+
+void Player::TakeDamage(int damage)
+{
+	SetLifePoints(GetLifePoints() - damage);
+	if (GetLifePoints() <= 0)
+	{
+		SetLives(GetLives() - 1);
+		SetLifePoints(10);
+	}
 }
 
 Sphere* Player::GetBoundingSphere()

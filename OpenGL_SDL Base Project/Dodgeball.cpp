@@ -30,6 +30,11 @@ void Dodgeball::Update(float deltaTime, SDL_Event e)
 	}
 
 	GameObject::Update(deltaTime,e);
+
+	if (GetBoundingSphere()->GetCollided() == true)
+	{
+
+	}
 }
 
 void Dodgeball::Render()

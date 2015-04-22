@@ -9,10 +9,15 @@ public:
 	void Render();
 	void Move(float deltaTime);
 	Sphere* GetBoundingSphere();
+	void TakeDamage(int damage);
+	void SetLives(int value)	{ lives = value; }
+	int GetLives()				{ return lives; }
 
 private:
 	bool holdingLeft;
 	bool holdingRight;
 	bool holdingUp;
 	bool holdingDown;
+
+	int lives;
 };

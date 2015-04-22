@@ -60,12 +60,22 @@ void GameScreenGameLevel1::Update(float deltaTime, SDL_Event e)
 	debugPlayer->Update(deltaTime, e);
 	for (int i = 0; i < theDodgeballs.size(); i++)
 	{
+
 		theDodgeballs[i]->Update(deltaTime,e);
+
 		if (theDodgeballs[i]->PositionCheck() == false)
 		{
 			delete theDodgeballs[i];
 			theDodgeballs[i] = new Dodgeball();
 		}
+
 		Collision::SphereSphereCollision(theDodgeballs[i]->GetBoundingSphere(), debugPlayer->GetBoundingSphere());
+
+		if (theDodgeballs[i]->GetBoundingSphere()->GetCollided == true)
+		{
+			delete theDodgeballs[i];
+			theDodgeballs[i] = new Dodgeball();
+			debugPlayer->
+		}
 	}
 }
