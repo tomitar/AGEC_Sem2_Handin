@@ -74,3 +74,8 @@ bool Dodgeball::PositionCheck()
 	}
 
 }
+
+Sphere* Dodgeball::GetBoundingSphere()
+{
+	return GameObject::GetBoundingSphere();
+}

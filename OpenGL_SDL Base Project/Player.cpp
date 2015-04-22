@@ -132,3 +132,8 @@ void Player::Move(float deltaTime)
 	movement.y = 0;
 	movement.z = 0;
 }
+
+Sphere* Player::GetBoundingSphere()
+{
+	return GameObject::GetBoundingSphere();
+}

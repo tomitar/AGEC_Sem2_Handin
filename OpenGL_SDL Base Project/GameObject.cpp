@@ -46,8 +46,6 @@ void GameObject::SetModel(Vector3D startpos, string name, bool vis, string textu
 
 void GameObject::Update(float deltaTime, SDL_Event e)
 {
-
-
 	if (hasPhysics == true)
 	{
 		float constGravity = GRAVITY;

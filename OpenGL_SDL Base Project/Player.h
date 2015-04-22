@@ -8,7 +8,7 @@ public:
 	void Update(float deltaTime, SDL_Event e);
 	void Render();
 	void Move(float deltaTime);
-	Sphere* GetBoundingSphere()	{ return GetBoundingSphere(); }
+	Sphere* GetBoundingSphere();
 
 private:
 	bool holdingLeft;
