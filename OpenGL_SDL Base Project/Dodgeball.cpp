@@ -18,6 +18,7 @@ Dodgeball::Dodgeball() : GameObject(0,false,COLLISION_SPHERE)
 
 Dodgeball::~Dodgeball()
 {
+	std::cout << "Dodgeball destructor" << std::endl;
 }
 
 void Dodgeball::Update(float deltaTime, SDL_Event e)

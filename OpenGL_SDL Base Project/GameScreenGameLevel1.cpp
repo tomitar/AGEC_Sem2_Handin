@@ -61,6 +61,10 @@ void GameScreenGameLevel1::Update(float deltaTime, SDL_Event e)
 	for (int i = 0; i < 30; i++)
 	{
 		theDodgeballs[i]->Update(deltaTime,e);
-		if (theDodgeballs[i]->GetPosition().x < )
+		if (theDodgeballs[i]->PositionCheck() == false)
+		{
+			delete theDodgeballs[i];
+			theDodgeballs[i] = new Dodgeball();
+		}
 	}
 }
