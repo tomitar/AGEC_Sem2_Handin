@@ -9,4 +9,5 @@ public:
 	void Render();
 
 	float RandomFloat(float a, float b);
+	bool PositionCheck();
 };

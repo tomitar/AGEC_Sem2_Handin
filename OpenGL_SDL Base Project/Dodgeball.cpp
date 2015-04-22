@@ -48,3 +48,28 @@ float Dodgeball::RandomFloat(float a, float b)
 	float r = random*diff;
 	return a + r;
 }
+
+bool Dodgeball::PositionCheck()
+{
+	if (GetPosition().x > 28.0f)
+	{
+		return false;
+	}
+	else if (GetPosition().x < -28.0f)
+	{
+		return false;
+	}
+	else if (GetPosition().z > 33.0f)
+	{
+		return false;
+	}
+	else if (GetPosition().z < -40.0f)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+
+}
