@@ -37,6 +37,11 @@ void GameObject::Render()
 		cout << "COLLISION!" << endl;
 	}
 	objectModel->render(ANIM_CUSTOM);
+	glPushMatrix();
+	glTranslatef(position.x, position.y, position.z);
+	glColor3f(0.0, 0.0, 0.0);
+	glutWireSphere(boundingSphere->GetBoundingRadius(), 10, 10);
+	glPopMatrix();
 }
 
 void GameObject::SetModel(Vector3D startpos, string name, bool vis, string texture)
