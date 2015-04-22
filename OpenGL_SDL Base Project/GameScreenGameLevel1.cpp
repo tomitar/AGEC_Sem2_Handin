@@ -25,7 +25,11 @@ GameScreenGameLevel1::GameScreenGameLevel1()
 		{ 0.7f, 0.7f, 0.7f, 1.0f },
 		{ 0.5f, 0.5f, 0.5f, 1.0f }
 	};
-	debugDodgeball = new Dodgeball();
+	
+	for (int i = 0; i < 30; i++)
+	{
+		theDodgeballs.push_back(new Dodgeball());
+	}
 }
 
 GameScreenGameLevel1::~GameScreenGameLevel1()
@@ -44,12 +48,18 @@ void GameScreenGameLevel1::Render()
 	glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
 
 	debugPlayer->Render();
-	debugDodgeball->Render();
+	for (int i = 0; i < 30; i++)
+	{
+		theDodgeballs[i]->Render();
+	}
 }
 
 void GameScreenGameLevel1::Update(float deltaTime, SDL_Event e)
 {
 	GameScreen::Update(deltaTime, e);
 	debugPlayer->Update(deltaTime, e);
-	debugDodgeball->Update(deltaTime, e);
+	for (int i = 0; i < 30; i++)
+	{
+		theDodgeballs[i]->Update(deltaTime,e);
+	}
 }

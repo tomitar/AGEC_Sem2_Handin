@@ -12,6 +12,7 @@ public:
 	void		Update(float deltaTime, SDL_Event e);
 
 	Player* debugPlayer;
-	Dodgeball* debugDodgeball;
+	
+	std::vector<Dodgeball*> theDodgeballs;
 };
 
