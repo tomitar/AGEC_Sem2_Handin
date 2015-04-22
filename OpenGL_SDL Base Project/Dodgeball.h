@@ -10,4 +10,5 @@ public:
 
 	float RandomFloat(float a, float b);
 	bool PositionCheck();
+	Sphere* GetBoundingSphere()	{ return GetBoundingSphere(); }
 };

@@ -48,7 +48,7 @@ void GameScreenGameLevel1::Render()
 	glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
 
 	debugPlayer->Render();
-	for (int i = 0; i < 30; i++)
+	for (int i = 0; i < theDodgeballs.size(); i++)
 	{
 		theDodgeballs[i]->Render();
 	}
@@ -58,7 +58,7 @@ void GameScreenGameLevel1::Update(float deltaTime, SDL_Event e)
 {
 	GameScreen::Update(deltaTime, e);
 	debugPlayer->Update(deltaTime, e);
-	for (int i = 0; i < 30; i++)
+	for (int i = 0; i < theDodgeballs.size(); i++)
 	{
 		theDodgeballs[i]->Update(deltaTime,e);
 		if (theDodgeballs[i]->PositionCheck() == false)
@@ -66,5 +66,6 @@ void GameScreenGameLevel1::Update(float deltaTime, SDL_Event e)
 			delete theDodgeballs[i];
 			theDodgeballs[i] = new Dodgeball();
 		}
+		Collision::SphereSphereCollision(theDodgeballs[i]->GetBoundingSphere(), debugPlayer->GetBoundingSphere());
 	}
 }
