@@ -141,7 +141,7 @@ void Player::TakeDamage(int damage)
 	if (GetLifePoints() <= 0)
 	{
 		SetLives(GetLives() - 1);
-		SetLifePoints(10);
+		SetLifePoints(10.0f);
 	}
 }
 

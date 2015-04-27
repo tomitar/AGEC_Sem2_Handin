@@ -26,6 +26,9 @@ public:
 	float GetGravityVal()			{ return gravityVal; }
 	void SetGravityVal(float value)	{ gravityVal = value; }
 
+	bool GetGameOverFlag()			{ return gameOverFlag; }
+	void SetGameOverFlag(bool value){ gameOverFlag = value; }
+
 protected:
 	Camera* mCamera;
 
@@ -33,6 +36,7 @@ private:
 	//Current max number of objects in a scene is 64.
 	std::vector<GameObject*> gameObjectArray;
 	float gravityVal;
+	bool gameOverFlag;
 };
 
 

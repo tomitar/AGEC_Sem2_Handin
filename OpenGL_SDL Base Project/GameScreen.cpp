@@ -16,6 +16,8 @@ GameScreen::GameScreen()
 
 	//clear background colour.
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+	SetGameOverFlag(false);
 }
 
 //--------------------------------------------------------------------------------------------------

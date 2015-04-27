@@ -6,6 +6,7 @@
 #include "GameScreenMenu.h"
 #include "GameScreenGameLevel1.h"
 #include "GameScreenGameLevel2.h"
+#include "GameScreenGameOver.h"
 #include <string>
 #include <sstream>
 
@@ -86,6 +87,14 @@ void GameScreenManager::Update(float deltaTime, SDL_Event e)
 
 		totalframes = 0;
 	}
+
+	if (thisScreen == SCREEN_GAMELEVEL1)
+	{
+		if (mCurrentScreen->GetGameOverFlag() == true)
+		{
+			ChangeScreen(SCREEN_GAMEOVER);
+		}
+	}
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -104,6 +113,7 @@ void GameScreenManager::ChangeScreen(SCREENS newScreen)
 	GameScreenMenu* tempScreenMenu;
 	GameScreenGameLevel1* tempScreenLevel1;
 	GameScreenGameLevel2* tempScreenLevel2;
+	GameScreenGameOver* tempScreenOver;
 
 	//Initialise the new screen.
 	switch(newScreen)
@@ -154,6 +164,10 @@ void GameScreenManager::ChangeScreen(SCREENS newScreen)
 			break;
 
 		case SCREEN_GAMEOVER:
+			tempScreenOver = new GameScreenGameOver();
+			mCurrentScreen = (GameScreen*)tempScreenOver;
+			tempScreenOver = NULL;
+			thisScreen = SCREEN_GAMEOVER;
 		break;
 		
 		case SCREEN_HIGHSCORES:

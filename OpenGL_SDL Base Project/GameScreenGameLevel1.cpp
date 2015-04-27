@@ -78,4 +78,9 @@ void GameScreenGameLevel1::Update(float deltaTime, SDL_Event e)
 			debugPlayer->TakeDamage(20);
 		}
 	}
+
+	if (debugPlayer->GetLives() < 0)
+	{
+		SetGameOverFlag(true);
+	}
 }

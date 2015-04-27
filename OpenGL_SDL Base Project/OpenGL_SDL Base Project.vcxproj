@@ -76,6 +76,7 @@
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="GameScreenGameLevel1.h" />
     <ClInclude Include="GameScreenGameLevel2.h" />
+    <ClInclude Include="GameScreenGameOver.h" />
     <ClInclude Include="GameScreenLevel1.h" />
     <ClInclude Include="GameScreenLevel2.h" />
     <ClInclude Include="GameScreenLevel3.h" />
@@ -96,6 +97,7 @@
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="GameScreenGameLevel1.cpp" />
     <ClCompile Include="GameScreenGameLevel2.cpp" />
+    <ClCompile Include="GameScreenGameOver.cpp" />
     <ClCompile Include="GameScreenLevel1.cpp" />
     <ClCompile Include="GameScreenLevel2.cpp" />
     <ClCompile Include="GameScreenLevel3.cpp" />
