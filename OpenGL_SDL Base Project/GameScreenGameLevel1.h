@@ -14,5 +14,7 @@ public:
 	Player* debugPlayer;
 	
 	std::vector<Dodgeball*> theDodgeballs;
+
+	float timeSinceStart;
 };
 

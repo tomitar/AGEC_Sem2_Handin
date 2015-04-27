@@ -16,7 +16,8 @@ GameScreenGameLevel1::GameScreenGameLevel1()
 	mCamera->setPosition(Vector3D(0.0f, 80.0f, 0.0f));
 	mCamera->setRotation(Vector3D(90, 0, 0));
 	mCamera->setIsStatic(true);
-	
+	timeSinceStart = 0.0f;
+
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 
@@ -56,29 +57,32 @@ void GameScreenGameLevel1::Render()
 
 void GameScreenGameLevel1::Update(float deltaTime, SDL_Event e)
 {
+	timeSinceStart += deltaTime;
 	GameScreen::Update(deltaTime, e);
 	debugPlayer->Update(deltaTime, e);
-	for (int i = 0; i < theDodgeballs.size(); i++)
+	if (timeSinceStart > 5.0f)
 	{
-
-		theDodgeballs[i]->Update(deltaTime,e);
-
-		if (theDodgeballs[i]->PositionCheck() == false)
+		for (int i = 0; i < theDodgeballs.size(); i++)
 		{
-			delete theDodgeballs[i];
-			theDodgeballs[i] = new Dodgeball();
-		}
 
-		Collision::SphereSphereCollision(theDodgeballs[i]->GetBoundingSphere(), debugPlayer->GetBoundingSphere());
+			theDodgeballs[i]->Update(deltaTime, e);
 
-		if (theDodgeballs[i]->GetBoundingSphere()->GetCollided() == true)
-		{
-			delete theDodgeballs[i];
-			theDodgeballs[i] = new Dodgeball();
-			debugPlayer->TakeDamage(20);
+			if (theDodgeballs[i]->PositionCheck() == false)
+			{
+				delete theDodgeballs[i];
+				theDodgeballs[i] = new Dodgeball();
+			}
+
+			Collision::SphereSphereCollision(theDodgeballs[i]->GetBoundingSphere(), debugPlayer->GetBoundingSphere());
+
+			if (theDodgeballs[i]->GetBoundingSphere()->GetCollided() == true)
+			{
+				delete theDodgeballs[i];
+				theDodgeballs[i] = new Dodgeball();
+				debugPlayer->TakeDamage(20);
+			}
 		}
 	}
-
 	if (debugPlayer->GetLives() < 0)
 	{
 		SetGameOverFlag(true);

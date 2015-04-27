@@ -143,6 +143,7 @@ void Player::TakeDamage(int damage)
 		SetLives(GetLives() - 1);
 		SetLifePoints(10.0f);
 	}
+	std::cout << GetLives() << std::endl;
 }
 
 Sphere* Player::GetBoundingSphere()
