@@ -5,6 +5,7 @@
 Dodgeball::Dodgeball() : GameObject(0,false,COLLISION_SPHERE)
 {
 	SetHasPhysics(true);
+	SetHasHitPlayer(false);
 	SetSpeed(Vector3D(	RandomFloat(-7.0f,7.0f),
 									0.0f,
 							RandomFloat(-7.0f,7.0f)));
@@ -14,23 +15,33 @@ Dodgeball::Dodgeball() : GameObject(0,false,COLLISION_SPHERE)
 							RandomFloat(-40.0f, 33.0f)));
 
 	SetModel(position, "Tree.3ds", true, "notext");
+
+	positionOffset = Vector3D(0.0f, 0.0f, 0.0f);
 }
 
 Dodgeball::~Dodgeball()
 {
-	std::cout << "Dodgeball destructor" << std::endl;
 }
 
 void Dodgeball::Update(float deltaTime, SDL_Event e)
 {
-	//bounce inelastic
-	if (GetPosition().y <= 0.0f)
+	Vector3D tempPosition;
+	if (HasHitPlayer == false)
 	{
-		SetSpeed(Vector3D(GetSpeed().x, GetSpeed().y*-1.0f, (GetSpeed().z)));
+		//bounce inelastic
+		if (GetPosition().y <= 0.0f)
+		{
+			SetSpeed(Vector3D(GetSpeed().x, GetSpeed().y*-1.0f, (GetSpeed().z)));
+		}
+	}
+	else
+	{
+		tempPosition = ParentPlayer->GetPlayerPosition();
+		tempPosition.x = tempPosition.x - positionOffset.x;
+		SetPosition(tempPosition);
 	}
 
-	GameObject::Update(deltaTime,e);
-
+	GameObject::Update(deltaTime, e);
 }
 
 void Dodgeball::Render()
@@ -73,10 +84,26 @@ bool Dodgeball::PositionCheck()
 	{
 		return true;
 	}
-
 }
 
 Sphere* Dodgeball::GetBoundingSphere()
 {
 	return GameObject::GetBoundingSphere();
+}
+
+void Dodgeball::SetHasHitPlayer(bool value)		
+{ 
+	HasHitPlayer = value; 
+	if (value == true)
+	{
+		SetSpeed(Vector3D(0, 0, 0));
+		SetHasPhysics(false);
+	}
+	else
+	{
+		SetSpeed(Vector3D(	RandomFloat(-7.0f, 7.0f),
+							0.0f,
+							RandomFloat(-7.0f, 7.0f)));
+		SetHasPhysics(true);
+	}
 }

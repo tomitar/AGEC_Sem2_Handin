@@ -13,6 +13,8 @@ public:
 	void SetLives(int value)	{ lives = value; }
 	int GetLives()				{ return lives; }
 
+	Vector3D GetPlayerPosition()		{ return Vector3D( GameObject::GetPosition().x, GameObject::GetPosition().y, GameObject::GetPosition().z); }
+
 private:
 	bool holdingLeft;
 	bool holdingRight;

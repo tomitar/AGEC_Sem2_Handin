@@ -32,10 +32,6 @@ GameObject::~GameObject()
 
 void GameObject::Render()
 {
-	if (boundingSphere->GetCollided())
-	{
-		cout << "COLLISION!" << endl;
-	}
 	objectModel->render(ANIM_CUSTOM);
 	glPushMatrix();
 	glTranslatef(position.x, position.y, position.z);

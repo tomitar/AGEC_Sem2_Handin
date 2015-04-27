@@ -77,9 +77,24 @@ void GameScreenGameLevel1::Update(float deltaTime, SDL_Event e)
 
 			if (theDodgeballs[i]->GetBoundingSphere()->GetCollided() == true)
 			{
-				delete theDodgeballs[i];
-				theDodgeballs[i] = new Dodgeball();
-				debugPlayer->TakeDamage(20);
+				if (theDodgeballs[i]->GetHasHitPlayer() != true)
+				{
+					debugPlayer->TakeDamage(20);
+				}
+				switch (debugPlayer->GetLives())
+				{
+				case 2:
+					theDodgeballs[i]->SetPositionOffset(Vector3D(5.0f,0.0f,0.0f));
+					break;
+				case 1:
+					theDodgeballs[i]->SetPositionOffset(Vector3D(15.0f, 0.0f, 0.0f));
+					break;
+				case 0:
+					theDodgeballs[i]->SetPositionOffset(Vector3D(20.0f, 0.0f, 0.0f));
+					break;
+				}
+				theDodgeballs[i]->SetHasHitPlayer(true);
+				theDodgeballs[i]->SetParentPlayer(debugPlayer);
 			}
 		}
 	}
