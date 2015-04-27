@@ -49,3 +49,13 @@ void GameScreen::ClearArrayLocation(int arrayIndex)
 {
 	gameObjectArray[arrayIndex] = NULL;
 }
+
+void GameScreen::PrintStringToScreen(int xpos, int ypos, string inString)
+{
+	xpos = 50 - (inString.size() / 2);
+	glRasterPos2i(xpos, ypos);
+	for (int i = 0; i < inString.size(); i++)
+	{
+		glutBitmapCharacter(GLUT_BITMAP_9_BY_15, (int)inString[i]);
+	}
+}

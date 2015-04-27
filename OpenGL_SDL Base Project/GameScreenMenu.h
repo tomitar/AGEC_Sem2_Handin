@@ -10,7 +10,4 @@ public:
 
 	void Render();
 	void Update(float deltaTime, SDL_Event e);
-
-private:
-	void PrintStringToScreen(int xpos, int ypos, string inString);
 };

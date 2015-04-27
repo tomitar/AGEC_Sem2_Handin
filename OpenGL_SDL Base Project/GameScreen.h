@@ -29,6 +29,8 @@ public:
 	bool GetGameOverFlag()			{ return gameOverFlag; }
 	void SetGameOverFlag(bool value){ gameOverFlag = value; }
 
+	void PrintStringToScreen(int xpos, int ypos, string inString);
+
 protected:
 	Camera* mCamera;
 
