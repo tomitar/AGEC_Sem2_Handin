@@ -38,6 +38,8 @@ void Dodgeball::Update(float deltaTime, SDL_Event e)
 	{
 		tempPosition = ParentPlayer->GetPlayerPosition();
 		tempPosition.x = tempPosition.x - positionOffset.x;
+		tempPosition.y = tempPosition.y - positionOffset.y;
+		tempPosition.z = tempPosition.z - positionOffset.z;
 		SetPosition(tempPosition);
 	}
 
@@ -64,21 +66,28 @@ float Dodgeball::RandomFloat(float a, float b)
 
 bool Dodgeball::PositionCheck()
 {
-	if (GetPosition().x > 28.0f)
+	if (GetHasHitPlayer() == false)
 	{
-		return false;
-	}
-	else if (GetPosition().x < -28.0f)
-	{
-		return false;
-	}
-	else if (GetPosition().z > 33.0f)
-	{
-		return false;
-	}
-	else if (GetPosition().z < -40.0f)
-	{
-		return false;
+		if (GetPosition().x > 28.0f)
+		{
+			return false;
+		}
+		else if (GetPosition().x < -28.0f)
+		{
+			return false;
+		}
+		else if (GetPosition().z > 33.0f)
+		{
+			return false;
+		}
+		else if (GetPosition().z < -40.0f)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 	else
 	{

@@ -87,10 +87,10 @@ void GameScreenGameLevel1::Update(float deltaTime, SDL_Event e)
 					theDodgeballs[i]->SetPositionOffset(Vector3D(5.0f,0.0f,0.0f));
 					break;
 				case 1:
-					theDodgeballs[i]->SetPositionOffset(Vector3D(15.0f, 0.0f, 0.0f));
+					theDodgeballs[i]->SetPositionOffset(Vector3D(5.0f, 0.0f, 5.0f));
 					break;
 				case 0:
-					theDodgeballs[i]->SetPositionOffset(Vector3D(20.0f, 0.0f, 0.0f));
+					theDodgeballs[i]->SetPositionOffset(Vector3D(5.0f, 0.0f, -5.0f));
 					break;
 				}
 				theDodgeballs[i]->SetHasHitPlayer(true);
