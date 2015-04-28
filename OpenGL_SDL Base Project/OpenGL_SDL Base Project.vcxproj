@@ -87,6 +87,7 @@
     <ClInclude Include="ObjectOBJ.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="QuaternionMath.h" />
+    <ClInclude Include="ScoreScreen.h" />
     <ClInclude Include="Terrain.h" />
     <ClInclude Include="Texture.h" />
   </ItemGroup>
@@ -108,6 +109,7 @@
     <ClCompile Include="ObjectOBJ.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="QuaternionMath.cpp" />
+    <ClCompile Include="ScoreScreen.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="Texture.cpp" />

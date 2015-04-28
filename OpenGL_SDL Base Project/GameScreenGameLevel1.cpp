@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Camera.h"
 #include "Dodgeball.h"
+#include <sstream>
 
 #include <iostream>
 using namespace::std;
@@ -12,10 +13,15 @@ GameScreenGameLevel1::GameScreenGameLevel1()
 {
 	cout << "GSLV1 constructor" << endl;
 	debugPlayer = new Player();
+	debugPlayer->SetPosition(Vector3D(-29, 0, 30));
+
 	//AddObjectToArray(debugPlayer, 0);
+
 	mCamera->setPosition(Vector3D(0.0f, 80.0f, 0.0f));
 	mCamera->setRotation(Vector3D(90, 0, 0));
 	mCamera->setIsStatic(true);
+
+	SetVictoryFlag(false);
 	timeSinceStart = 0.0f;
 
 	glEnable(GL_LIGHTING);
@@ -49,10 +55,15 @@ void GameScreenGameLevel1::Render()
 	glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
 
 	debugPlayer->Render();
+	
 	for (int i = 0; i < theDodgeballs.size(); i++)
 	{
 		theDodgeballs[i]->Render();
 	}
+
+	std::stringstream ss;
+	ss << debugPlayer->GetLives() << " " << timeSinceStart << "s " << std::endl;
+	PrintStringToScreen(10.0f, 80.0f, ss.str());
 }
 
 void GameScreenGameLevel1::Update(float deltaTime, SDL_Event e)
@@ -98,8 +109,15 @@ void GameScreenGameLevel1::Update(float deltaTime, SDL_Event e)
 			}
 		}
 	}
+	
 	if (debugPlayer->GetLives() < 0)
 	{
 		SetGameOverFlag(true);
+	}
+
+	if (debugPlayer->GetPosition().x > 22 && debugPlayer->GetPosition().z < -33)
+	{
+		SetVictoryFlag(true);
+		SetLevelScore(2000 - timeSinceStart);
 	}
 }

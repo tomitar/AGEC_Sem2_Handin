@@ -46,6 +46,9 @@ void Player::Update(float deltaTime, SDL_Event e)
 		case SDLK_d:
 			holdingRight = true;
 			break;
+
+		case SDLK_p:
+			std::cout << GetPosition().x << " " << GetPosition().y << " " << GetPosition().z << std::endl;
 		}
 	}
 	else if (e.type == SDL_KEYUP)

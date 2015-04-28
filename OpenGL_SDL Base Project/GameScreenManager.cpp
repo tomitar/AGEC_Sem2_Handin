@@ -7,6 +7,7 @@
 #include "GameScreenGameLevel1.h"
 #include "GameScreenGameLevel2.h"
 #include "GameScreenGameOver.h"
+#include "ScoreScreen.h"
 #include <string>
 #include <sstream>
 
@@ -21,6 +22,7 @@ GameScreenManager::GameScreenManager(SCREENS startScreen)
 
 	totalframes = 0;
 	frameTime = 0.0f;
+	currentScore = 0.0f;
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -94,6 +96,12 @@ void GameScreenManager::Update(float deltaTime, SDL_Event e)
 		{
 			ChangeScreen(SCREEN_GAMEOVER);
 		}
+		if (mCurrentScreen->GetVictoryFlag() == true)
+		{
+			currentScore += mCurrentScreen->GetLevelScore();
+			ChangeScreen(SCREEN_HIGHSCORES);
+			mCurrentScreen->SetLevelScore(currentScore);
+		}
 	}
 }
 
@@ -114,6 +122,7 @@ void GameScreenManager::ChangeScreen(SCREENS newScreen)
 	GameScreenGameLevel1* tempScreenLevel1;
 	GameScreenGameLevel2* tempScreenLevel2;
 	GameScreenGameOver* tempScreenOver;
+	ScoreScreen* tempScreenScore;
 
 	//Initialise the new screen.
 	switch(newScreen)
@@ -171,6 +180,10 @@ void GameScreenManager::ChangeScreen(SCREENS newScreen)
 		break;
 		
 		case SCREEN_HIGHSCORES:
+			tempScreenScore = new ScoreScreen();
+			mCurrentScreen = (GameScreen*)tempScreenScore;
+			tempScreenScore = NULL;
+			thisScreen = SCREEN_HIGHSCORES;
 		break;
 		
 		default:

@@ -19,6 +19,8 @@ public:
 
 	void ChangeScreen(SCREENS newScreen);
 
+	float currentScore;
+
 private:
 	GameScreen* mCurrentScreen;
 	SCREENS thisScreen;
