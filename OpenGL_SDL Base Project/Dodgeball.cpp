@@ -17,6 +17,9 @@ Dodgeball::Dodgeball() : GameObject(0,false,COLLISION_SPHERE)
 	SetModel(position, "Tree.3ds", true, "notext");
 
 	positionOffset = Vector3D(0.0f, 0.0f, 0.0f);
+
+	bounceWav = NULL;
+	bounceWav = Mix_LoadWAV("bounce.wav");
 }
 
 Dodgeball::~Dodgeball()
@@ -32,6 +35,7 @@ void Dodgeball::Update(float deltaTime, SDL_Event e)
 		if (GetPosition().y <= 0.0f)
 		{
 			SetSpeed(Vector3D(GetSpeed().x, GetSpeed().y*-1.0f, (GetSpeed().z)));
+			Mix_PlayChannel(-1, bounceWav, 0);
 		}
 	}
 	else

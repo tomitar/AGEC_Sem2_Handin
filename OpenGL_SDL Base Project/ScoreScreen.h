@@ -1,5 +1,7 @@
 #pragma once
 #include "GameScreen.h"
+#include "SDL_mixer.h"
+
 class ScoreScreen :	public GameScreen
 {
 public:
@@ -8,5 +10,8 @@ public:
 	
 	void Render();
 	void Update(float deltaTime, SDL_Event e);
+
+private:
+	Mix_Chunk *WinSFX;
 };
 

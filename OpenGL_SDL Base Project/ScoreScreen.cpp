@@ -3,11 +3,16 @@
 
 ScoreScreen::ScoreScreen()
 {
+	WinSFX = NULL;
+	WinSFX = Mix_LoadWAV("applause.wav");
+	Mix_PlayChannel(-1, WinSFX, 0);
 }
 
 
 ScoreScreen::~ScoreScreen()
 {
+	Mix_CloseAudio();
+	Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096);
 }
 
 void ScoreScreen::Render()

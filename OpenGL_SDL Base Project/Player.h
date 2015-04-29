@@ -1,5 +1,7 @@
 #pragma once
 #include "GameObject.h"
+#include "SDL_mixer.h"
+
 class Player : public GameObject
 {
 public:
@@ -22,4 +24,6 @@ private:
 	bool holdingDown;
 
 	int lives;
+
+	Mix_Chunk *denzilScream;
 };

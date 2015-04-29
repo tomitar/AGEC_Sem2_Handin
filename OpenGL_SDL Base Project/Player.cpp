@@ -7,7 +7,7 @@ using namespace::std;
 
 Player::Player() : GameObject(100.0f, true, COLLISION_SPHERE)
 {
-	SetModel(Vector3D(0.0f, 0.0f, 0.0f), "Ship_1_Unwrap.3ds", true, "Ship_1_Texture.raw");
+	SetModel(Vector3D(0.0f, 0.0f, 0.0f), "Tree_1.3ds", true, "Ship_1_Texture.raw");
 	SetMovementSpeed(15);
 	holdingDown = false;
 	holdingLeft = false;
@@ -16,6 +16,8 @@ Player::Player() : GameObject(100.0f, true, COLLISION_SPHERE)
 	SetHasPhysics(false);
 	SetLifePoints(10);
 	SetLives(3);
+	denzilScream = NULL;
+	denzilScream = Mix_LoadWAV("Scream.wav");
 }
 
 
@@ -147,6 +149,10 @@ void Player::TakeDamage(int damage)
 		SetLifePoints(10.0f);
 	}
 	std::cout << GetLives() << std::endl;
+	if (lives == -1)
+	{
+		Mix_PlayChannel(-1, denzilScream, 0);
+	}
 }
 
 Sphere* Player::GetBoundingSphere()

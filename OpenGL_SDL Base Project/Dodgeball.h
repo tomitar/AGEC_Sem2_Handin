@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Player.h"
+#include "SDL_mixer.h"
 
 class Dodgeball : GameObject
 {
@@ -26,4 +27,5 @@ private:
 	bool HasHitPlayer;
 	Player* ParentPlayer;
 	Vector3D positionOffset;
+	Mix_Chunk *bounceWav;
 };

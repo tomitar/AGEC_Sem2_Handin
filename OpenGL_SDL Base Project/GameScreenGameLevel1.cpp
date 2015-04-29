@@ -25,7 +25,7 @@ GameScreenGameLevel1::GameScreenGameLevel1()
 	timeSinceStart = 0.0f;
 
 	courtTexture = new Texture();
-	courtTexture->Load("Ship_1_Texture.raw", 512, 512);
+	courtTexture->Load("Penguins.raw", 512, 512);
 
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
@@ -66,7 +66,7 @@ void GameScreenGameLevel1::Render()
 
 	std::stringstream ss;
 	ss << debugPlayer->GetLives() << " " << timeSinceStart << "s " << std::endl;
-	PrintStringToScreen(10.0f, 80.0f, ss.str());
+	PrintStringToScreen(10.0f, 90.0f, ss.str());
 
 	glColor3f(1.0f, 1.0f, 1.0f);
 	glPushMatrix();

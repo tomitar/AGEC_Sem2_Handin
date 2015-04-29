@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Dodgeball.h"
 #include "Texture.h"
+#include <SDL_mixer.h>
 
 class GameScreenGameLevel1 : GameScreen
 {
@@ -20,4 +21,5 @@ public:
 	float timeSinceStart;
 
 	Texture* courtTexture;
+
 };

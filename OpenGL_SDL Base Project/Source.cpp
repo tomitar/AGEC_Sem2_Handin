@@ -46,8 +46,13 @@ int main(int argc, char* args[])
 		//Set up the game screen manager - Start with Level1
 		gameScreenManager = new GameScreenManager(SCREEN_MENU);
 		
+		if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
+		{
+			return false;
+		}
+
 		//Start the music.
-		LoadMusic("Who_Likes_to_Party.wav");
+		gMusic = Mix_LoadMUS("Who_Likes_to_Party.wav");
 		if(Mix_PlayingMusic() == 0)
 		{
 			Mix_PlayMusic(gMusic, -1);
