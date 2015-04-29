@@ -7,7 +7,7 @@ using namespace::std;
 
 Player::Player() : GameObject(100.0f, true, COLLISION_SPHERE)
 {
-	SetModel(Vector3D(0.0f, 0.0f, 0.0f), "Tree_1.3ds", true, "notexture.tga");
+	SetModel(Vector3D(0.0f, 0.0f, 0.0f), "Ship_1_Unwrap.3ds", true, "Ship_1_Texture.raw");
 	SetMovementSpeed(15);
 	holdingDown = false;
 	holdingLeft = false;

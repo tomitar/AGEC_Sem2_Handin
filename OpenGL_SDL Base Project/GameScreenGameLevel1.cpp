@@ -24,6 +24,9 @@ GameScreenGameLevel1::GameScreenGameLevel1()
 	SetVictoryFlag(false);
 	timeSinceStart = 0.0f;
 
+	courtTexture = new Texture();
+	courtTexture->Load("Ship_1_Texture.raw", 512, 512);
+
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
 
@@ -46,7 +49,7 @@ GameScreenGameLevel1::~GameScreenGameLevel1()
 void GameScreenGameLevel1::Render()
 {
 	GameScreen::Render();
-	float light_pos[] = { 0.0f, 50.0f, 150.0f, 1.0f };
+	float light_pos[] = { 0.0f, 50.0f, 0.0f, 1.0f };
 	//float light_pos[] = { 0.0f, 20.0f, 0.0f, 1.0f };
 
 	glLightfv(GL_LIGHT0, GL_AMBIENT, mLight.ambient);
@@ -64,6 +67,15 @@ void GameScreenGameLevel1::Render()
 	std::stringstream ss;
 	ss << debugPlayer->GetLives() << " " << timeSinceStart << "s " << std::endl;
 	PrintStringToScreen(10.0f, 80.0f, ss.str());
+
+	glColor3f(1.0f, 1.0f, 1.0f);
+	glPushMatrix();
+	glScalef(1.0f, 1.0f, 1.0f);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, courtTexture->GetID());
+	DrawCourt();
+	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
 }
 
 void GameScreenGameLevel1::Update(float deltaTime, SDL_Event e)
@@ -120,4 +132,22 @@ void GameScreenGameLevel1::Update(float deltaTime, SDL_Event e)
 		SetVictoryFlag(true);
 		SetLevelScore(2000 - timeSinceStart);
 	}
+}
+
+void GameScreenGameLevel1::DrawCourt()
+{
+	glBegin(GL_QUADS);
+		glTexCoord2f(0.0f, 0.0f);
+		glVertex3f(-28.0f, 0.0f, -40.0f);
+		//glVertex3f(-5.5f, 0.0f, -5.5f);
+		glTexCoord2f(1.0f, 0.0f);
+		glVertex3f(-28.0f, 0.0f, 33.0f);
+		//glVertex3f(5.5f, 0.0f, -5.5f);
+		glTexCoord2f(1.0f, 1.0f);
+		glVertex3f(28.0f, 0.0f, 33.0f);
+		//glVertex3f(5.5f, 0.0f, 5.5f);
+		glTexCoord2f(0.0f, 1.0f);
+		glVertex3f(28.0f, 0.0f, -40.0f);
+		//glVertex3f(-5.5f, 0.0f, 5.5f);
+	glEnd();
 }
