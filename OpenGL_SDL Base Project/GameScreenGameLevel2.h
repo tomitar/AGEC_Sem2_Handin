@@ -12,5 +12,5 @@ public:
 
 	Player* level2Player;
 
-	//void DrawGround(float groundLevel);
+	void DrawGround(float groundLevel);
 };
