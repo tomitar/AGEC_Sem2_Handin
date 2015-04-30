@@ -31,8 +31,6 @@ SDL_GLContext gGLContext = NULL;
 SDL_Surface*  gSurface   = NULL;
 Mix_Music*	  gMusic	 = NULL;
 Uint32		  gOldTime;
-float		  FPSCount   = 0.0f;
-
 
 GameScreenManager* gameScreenManager;
 
@@ -223,11 +221,7 @@ bool Update()
 			gameScreenManager->Update((float)(newTime-gOldTime)/1000.0f, e);
 		break;
 	}
-	
-	//Calculate the FPS
-	FPSCount = (60.0f / newTime);
-	//sprintf(FPSCounter, "%f", FPSCount);
-	//Set the current time to be the old time.
+
 	gOldTime = newTime;
 
 	return false;
