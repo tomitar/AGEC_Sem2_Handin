@@ -17,7 +17,6 @@ using namespace::std;
 //Local function prototypes.
 bool InitSDL();
 //SDL_Surface* LoadSurface(string path);
-void		 LoadMusic(string path);
 void CloseSDL();
 
 void Render();
@@ -29,7 +28,6 @@ SDL_Window*   gWindow    = NULL;
 SDL_GLContext gGLContext = NULL;
 //SDL_Renderer* gRenderer  = NULL;
 SDL_Surface*  gSurface   = NULL;
-Mix_Music*	  gMusic	 = NULL;
 Uint32		  gOldTime;
 
 GameScreenManager* gameScreenManager;
@@ -47,13 +45,6 @@ int main(int argc, char* args[])
 		if (Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
 		{
 			return false;
-		}
-
-		//Start the music.
-		gMusic = Mix_LoadMUS("Who_Likes_to_Party.wav");
-		if(Mix_PlayingMusic() == 0)
-		{
-			Mix_PlayMusic(gMusic, -1);
 		}
 
 		bool quit = false;
@@ -149,17 +140,6 @@ bool InitSDL()
 
 //-----------------------------------------------------------------------------------------------------
 
-void LoadMusic(string path)
-{
-	gMusic = Mix_LoadMUS(path.c_str());
-	if(gMusic == NULL)
-	{
-		cout << "Failed to load background music! Error: " << Mix_GetError() << endl;
-	}
-}
-
-//-----------------------------------------------------------------------------------------------------
-
 void CloseSDL()
 {
 	//Destroy the game screen manager.
@@ -173,10 +153,6 @@ void CloseSDL()
 	gWindow = NULL;
 	SDL_GL_DeleteContext(gGLContext);
 	gGLContext = NULL;
-
-	//Release music.
-	Mix_FreeMusic(gMusic);
-	gMusic = NULL;
 
 	//Quit SDL subsystems.
 	IMG_Quit();
