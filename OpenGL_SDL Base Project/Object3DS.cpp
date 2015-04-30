@@ -134,44 +134,8 @@ void Object3DS::update(float deltaTime, SDL_Event e, ANIMMODE animMode, Vector3D
 				bounceHeight = (bounceHeight - framerateIndependentFactor);
 			break;
 			}
-
-		/*case ANIM_CUSTOM:
-
-			if (e.type == SDL_KEYDOWN)
-			{
-				switch (e.key.keysym.sym)
-				{
-				case SDLK_RIGHT:
-					mPosition.z = (mPosition.z + framerateIndependentFactor);
-				break;
-
-				case SDLK_LEFT:
-					mPosition.z = (mPosition.z - framerateIndependentFactor);
-				break;
-
-				case SDLK_UP:
-					mPosition.x = (mPosition.x + framerateIndependentFactor);
-				break;
-
-				case SDLK_DOWN:
-					mPosition.x = (mPosition.x - framerateIndependentFactor);
-				break;
-				}
-			}*/
 	}
 	
-	//Manage input
-
-	/*if (e.type == SDL_KEYDOWN)
-	{
-		switch (e.key.keysym.sym)
-		{
-			case SDLK_o:
-				isVisible = !isVisible;
-			break;
-		}
-	}*/
-
 	mPosition = newPosition;
 }
 

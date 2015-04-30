@@ -66,6 +66,9 @@ void GameScreenManager::Update(float deltaTime, SDL_Event e)
 			case SCREEN_MENU:
 				ChangeScreen(SCREEN_GAMELEVEL1);
 				break;
+			case SCREEN_HIGHSCORES:
+				ChangeScreen(SCREEN_GAMELEVEL2);
+				break;
 			case SCREEN_GAMELEVEL1:
 				ChangeScreen(SCREEN_GAMELEVEL2);
 				break;

@@ -12,8 +12,11 @@ lighting mLight;
 GameScreenGameLevel1::GameScreenGameLevel1()
 {
 	cout << "GSLV1 constructor" << endl;
-	debugPlayer = new Player();
+	debugPlayer = new Player(MV_TOPDOWN);
 	debugPlayer->SetPosition(Vector3D(-29, 0, 30));
+
+	courtObject = new GameObject(0.0f, false, COLLISION_NONE);
+	courtObject->SetModel(Vector3D(0, 0, 0), "Court.3DS", true, "Court.raw");
 
 	//AddObjectToArray(debugPlayer, 0);
 
@@ -25,7 +28,7 @@ GameScreenGameLevel1::GameScreenGameLevel1()
 	timeSinceStart = 0.0f;
 
 	courtTexture = new Texture();
-	courtTexture->Load("Penguins.raw", 512, 512);
+	courtTexture->Load("Ship_1_Texture.raw", 512, 512);
 
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
@@ -57,6 +60,11 @@ void GameScreenGameLevel1::Render()
 	glLightfv(GL_LIGHT0, GL_SPECULAR, mLight.specular);
 	glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
 
+	glPushMatrix();
+	glScalef(1.2f, 1.0f, 3.0f);
+	courtObject->Render();
+	glPopMatrix();
+
 	debugPlayer->Render();
 	
 	for (int i = 0; i < theDodgeballs.size(); i++)
@@ -67,15 +75,6 @@ void GameScreenGameLevel1::Render()
 	std::stringstream ss;
 	ss << debugPlayer->GetLives() << " " << timeSinceStart << "s " << std::endl;
 	PrintStringToScreen(10.0f, 90.0f, ss.str());
-
-	glColor3f(1.0f, 1.0f, 1.0f);
-	glPushMatrix();
-	glScalef(1.0f, 1.0f, 1.0f);
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, courtTexture->GetID());
-	DrawCourt();
-	glDisable(GL_TEXTURE_2D);
-	glPopMatrix();
 }
 
 void GameScreenGameLevel1::Update(float deltaTime, SDL_Event e)
@@ -132,22 +131,4 @@ void GameScreenGameLevel1::Update(float deltaTime, SDL_Event e)
 		SetVictoryFlag(true);
 		SetLevelScore(2000 - timeSinceStart);
 	}
-}
-
-void GameScreenGameLevel1::DrawCourt()
-{
-	glBegin(GL_QUADS);
-		glTexCoord2f(0.0f, 0.0f);
-		glVertex3f(-28.0f, 0.0f, -40.0f);
-		//glVertex3f(-5.5f, 0.0f, -5.5f);
-		glTexCoord2f(1.0f, 0.0f);
-		glVertex3f(-28.0f, 0.0f, 33.0f);
-		//glVertex3f(5.5f, 0.0f, -5.5f);
-		glTexCoord2f(1.0f, 1.0f);
-		glVertex3f(28.0f, 0.0f, 33.0f);
-		//glVertex3f(5.5f, 0.0f, 5.5f);
-		glTexCoord2f(0.0f, 1.0f);
-		glVertex3f(28.0f, 0.0f, -40.0f);
-		//glVertex3f(-5.5f, 0.0f, 5.5f);
-	glEnd();
 }

@@ -15,6 +15,13 @@ struct material {
 	float shininess;
 };
 
+enum MOVEMENT_TYPE
+{
+	MV_TOPDOWN = 0,
+	MV_FPS,
+	MV_FLY
+};
+
 enum SCREENS
 {
 	SCREEN_INTRO = 0,

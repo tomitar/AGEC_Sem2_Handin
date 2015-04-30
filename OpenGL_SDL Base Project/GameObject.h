@@ -47,6 +47,7 @@ public:
 	bool GetHasPhysics()			{ return hasPhysics; }
 
 	Sphere* GetBoundingSphere()	{ return boundingSphere; }
+	CollisionType GetCollType()	{ return collType; }
 
 
 	void SetPosition(Vector3D value)							{ position = value; }
@@ -64,10 +65,11 @@ public:
 	void SetIsDestructable(bool value)							{ isDestructable = value; }
 	void SetIsStatic(bool value)								{ isStatic = value; }
 	void SetHasPhysics(bool value)								{ hasPhysics = value; }
+	void SetCollType(CollisionType value)						{ collType = value; }
 
 private:
 	Object3DS* objectModel;
-
 	Sphere* boundingSphere;
 	float radius;
+	CollisionType collType;
 };

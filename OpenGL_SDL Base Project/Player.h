@@ -5,15 +5,17 @@
 class Player : public GameObject
 {
 public:
-	Player();
+	Player(MOVEMENT_TYPE moveType);
 	~Player();
 	void Update(float deltaTime, SDL_Event e);
 	void Render();
 	void Move(float deltaTime);
 	Sphere* GetBoundingSphere();
 	void TakeDamage(int damage);
-	void SetLives(int value)	{ lives = value; }
-	int GetLives()				{ return lives; }
+	void SetLives(int value)				{ lives = value; }
+	int GetLives()							{ return lives; }
+	void SetMoveType(MOVEMENT_TYPE value)	{ moveType = value; }
+	MOVEMENT_TYPE GetMoveType()				{ return moveType; }
 
 	Vector3D GetPlayerPosition()		{ return Vector3D( GameObject::GetPosition().x, GameObject::GetPosition().y, GameObject::GetPosition().z); }
 
@@ -26,4 +28,5 @@ private:
 	int lives;
 
 	Mix_Chunk *denzilScream;
+	MOVEMENT_TYPE moveType;
 };

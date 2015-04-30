@@ -54,9 +54,11 @@ void Dodgeball::Render()
 {
 	GameObject::Render();
 	glPushMatrix();
+	glEnable(GL_COLOR);
 	glTranslatef(GetPosition().x, GetPosition().y, GetPosition().z);
 	glColor3f(0.9, 0.1, 0.1);
 	glutSolidSphere(1, 10, 10);
+	glDisable(GL_COLOR);
 	glPopMatrix();
 }
 

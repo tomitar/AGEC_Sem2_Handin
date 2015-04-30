@@ -5,7 +5,7 @@
 
 using namespace::std;
 
-Player::Player() : GameObject(100.0f, true, COLLISION_SPHERE)
+Player::Player(MOVEMENT_TYPE newMov) : GameObject(100.0f, true, COLLISION_SPHERE)
 {
 	SetModel(Vector3D(0.0f, 0.0f, 0.0f), "Tree_1.3ds", true, "Ship_1_Texture.raw");
 	SetMovementSpeed(15);
@@ -18,6 +18,7 @@ Player::Player() : GameObject(100.0f, true, COLLISION_SPHERE)
 	SetLives(3);
 	denzilScream = NULL;
 	denzilScream = Mix_LoadWAV("Scream.wav");
+	SetMoveType(newMov);
 }
 
 

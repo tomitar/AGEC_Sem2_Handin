@@ -12,7 +12,6 @@ public:
 	~GameScreenGameLevel1();
 	void		Render();
 	void		Update(float deltaTime, SDL_Event e);
-	void		DrawCourt();
 
 	Player* debugPlayer;
 	
@@ -22,4 +21,5 @@ public:
 
 	Texture* courtTexture;
 
+	GameObject* courtObject;
 };

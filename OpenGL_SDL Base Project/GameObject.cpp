@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace::std;
 
-GameObject::GameObject(float startLifePoints, bool startIsDestructable, CollisionType collType)
+GameObject::GameObject(float startLifePoints, bool startIsDestructable, CollisionType newCollType)
 {
 	//debug
 	cout << "GAMEOBJECT constructor" << endl;
@@ -13,6 +13,7 @@ GameObject::GameObject(float startLifePoints, bool startIsDestructable, Collisio
 	SetLifePoints(startLifePoints);
 	SetMovementSpeed(10);
 	SetHasPhysics(false);
+	collType = newCollType;
 
 	switch (collType)
 	{
@@ -33,11 +34,14 @@ GameObject::~GameObject()
 void GameObject::Render()
 {
 	objectModel->render(ANIM_CUSTOM);
-	glPushMatrix();
-	glTranslatef(position.x, position.y, position.z);
-	glColor3f(0.0, 0.0, 0.0);
-	glutWireSphere(boundingSphere->GetBoundingRadius(), 10, 10);
-	glPopMatrix();
+	if (collType == COLLISION_SPHERE)
+	{
+		glPushMatrix();
+		glTranslatef(position.x, position.y, position.z);
+		glColor3f(0.0, 0.0, 0.0);
+		glutWireSphere(boundingSphere->GetBoundingRadius(), 10, 10);
+		glPopMatrix();
+	}
 }
 
 void GameObject::SetModel(Vector3D startpos, string name, bool vis, string texture)
