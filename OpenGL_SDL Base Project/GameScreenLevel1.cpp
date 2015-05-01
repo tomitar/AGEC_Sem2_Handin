@@ -68,7 +68,7 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 	//Call parent update for camera functionality.
 	GameScreen::Update(deltaTime, e);
 
-//	m_p3DSModel->update(deltaTime, e, ANIM_CUSTOM);
+	m_p3DSModel->update(deltaTime, e, ANIM_CUSTOM, Vector3D(0.0f,mTerrain.GetHeight(0,0),0.0f));
 
 	mTerrain.Update(deltaTime);
 

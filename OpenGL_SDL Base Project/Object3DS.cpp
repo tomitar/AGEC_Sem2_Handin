@@ -65,9 +65,6 @@ void Object3DS::loadTexture()
 
 void Object3DS::update(float deltaTime, SDL_Event e, ANIMMODE animMode, Vector3D newPosition)
 {
-	//debug
-	//std::cout << newPosition.x << " " << newPosition.y << " " << newPosition.z << std::endl;
-	
 	double framerateIndependentFactor = movementSpeed * deltaTime;
 
 	//Handling constant movement

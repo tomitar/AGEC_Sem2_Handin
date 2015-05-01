@@ -17,6 +17,7 @@ public:
 	void		Update(float deltaTime);
 
 	float		getMaxHeight();
+	float		GetHeight(int x, int z);
 
 	void		GenerateNormals();
 	unsigned char h(int x, int y);
@@ -27,6 +28,7 @@ public:
 	float waterHeight;
 	bool isRising;
 	float maxHeight;
+
 //--------------------------------------------------------------------------------------------------
 private:
 	GLubyte heightmap[TERRAIN_SIZE * TERRAIN_SIZE];

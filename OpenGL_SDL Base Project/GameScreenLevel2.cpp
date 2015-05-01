@@ -2,6 +2,7 @@
 #include "../gl/glut.h"
 #include "ModelLoader.h"
 #include "Object3DS.h"
+#include "Camera.h"
 
 GameScreenLevel2::GameScreenLevel2() : GameScreen()
 {
@@ -23,6 +24,8 @@ GameScreenLevel2::GameScreenLevel2() : GameScreen()
 		{ 1.0f, 1.0f, 1.0, 1.0f },
 		100.0f
 	};
+
+	mCamera->setIsStatic(false);
 }
 
 

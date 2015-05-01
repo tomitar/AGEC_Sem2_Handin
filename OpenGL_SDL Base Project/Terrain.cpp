@@ -190,7 +190,7 @@ void Terrain::Render()
 
 	//draw the water
 	//Load water material
-	glMaterialfv(GL_FRONT, GL_AMBIENT, wMaterial.ambient);
+	/*glMaterialfv(GL_FRONT, GL_AMBIENT, wMaterial.ambient);
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, wMaterial.diffuse);
 	glMaterialfv(GL_FRONT, GL_SPECULAR, wMaterial.specular);
 	glMaterialf(GL_FRONT, GL_SHININESS, wMaterial.shininess);
@@ -211,7 +211,7 @@ void Terrain::Render()
 		glVertex3f(-TERRAIN_SIZE/2.1f, waterHeight, -TERRAIN_SIZE/2.1f);
 	glEnd();
 
-	glPopMatrix();
+	glPopMatrix();*/
 }
 
 //-----------------------------------------------------------------------------------------------
@@ -239,3 +239,9 @@ void Terrain::Update(float deltaTime)
 }
 
 //-----------------------------------------------------------------------------------------------
+
+float Terrain::GetHeight(int x, int z)
+{
+	//heightmap[z * TERRAIN_SIZE + x] / SCALE_FACTOR;
+	return heightmap[((z + TERRAIN_SIZE / 2)*TERRAIN_SIZE+(x + TERRAIN_SIZE / 2))]/SCALE_FACTOR;
+}
