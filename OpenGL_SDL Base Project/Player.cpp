@@ -14,13 +14,22 @@ Player::Player(MOVEMENT_TYPE newMov) : GameObject(100.0f, true, COLLISION_SPHERE
 	holdingRight = false;
 	holdingUp = false;
 	SetHasPhysics(false);
+	mouseMoved = false;
 	SetLifePoints(10);
 	SetLives(3);
 	denzilScream = NULL;
 	denzilScream = Mix_LoadWAV("Scream.wav");
 	SetMoveType(newMov);
-}
+	windowMidX = SCREEN_WIDTH / 2.0f;
+	windowMidY = SCREEN_HEIGHT / 2.0f;
 
+	if (GetMoveType() == MV_FPS)
+	{
+		SDL_WarpMouseInWindow(NULL, windowMidX, windowMidY);
+		yawSensitivity = 0.05f;
+		pitchSensitivity = 0.05f;
+	}
+}
 
 Player::~Player()
 {
@@ -33,45 +42,93 @@ void Player::Render()
 
 void Player::Update(float deltaTime, SDL_Event e)
 {
-	if (e.type == SDL_KEYDOWN)
+	switch (moveType)
 	{
-		switch (e.key.keysym.sym)
+	case MV_TOPDOWN:
+		if (e.type == SDL_KEYDOWN)
 		{
-		case SDLK_w:
-			holdingUp = true;
-			break;
-		case SDLK_s:
-			holdingDown = true;
-			break;
-		case SDLK_a:
-			holdingLeft = true;
-			break;
-		case SDLK_d:
-			holdingRight = true;
-			break;
+			switch (e.key.keysym.sym)
+			{
+			case SDLK_w:
+				holdingUp = true;
+				break;
+			case SDLK_s:
+				holdingDown = true;
+				break;
+			case SDLK_a:
+				holdingLeft = true;
+				break;
+			case SDLK_d:
+				holdingRight = true;
+				break;
+			}
+		}
+		else if (e.type == SDL_KEYUP)
+		{
+			switch (e.key.keysym.sym)
+			{
+			case SDLK_w:
+				holdingUp = false;
+				break;
+			case SDLK_s:
+				holdingDown = false;
+				break;
+			case SDLK_a:
+				holdingLeft = false;
+				break;
+			case SDLK_d:
+				holdingRight = false;
+				break;
+			}
+		}
+	break;
 
-		case SDLK_p:
-			std::cout << GetPosition().x << " " << GetPosition().y << " " << GetPosition().z << std::endl;
-		}
-	}
-	else if (e.type == SDL_KEYUP)
-	{
-		switch (e.key.keysym.sym)
+	case MV_FPS:
+		if (e.type == SDL_KEYDOWN)
 		{
-		case SDLK_w:
-			holdingUp = false;
-			break;
-		case SDLK_s:
-			holdingDown = false;
-			break;
-		case SDLK_a:
-			holdingLeft = false;
-			break;
-		case SDLK_d:
-			holdingRight = false;
-			break;
+			switch (e.key.keysym.sym)
+			{
+			case SDLK_w:
+				holdingUp = true;
+				break;
+			case SDLK_s:
+				holdingDown = true;
+				break;
+			case SDLK_a:
+				holdingLeft = true;
+				break;
+			case SDLK_d:
+				holdingRight = true;
+				break;
+			}
 		}
+		else if (e.type == SDL_KEYUP)
+		{
+			switch (e.key.keysym.sym)
+			{
+			case SDLK_w:
+				holdingUp = false;
+				break;
+			case SDLK_s:
+				holdingDown = false;
+				break;
+			case SDLK_a:
+				holdingLeft = false;
+				break;
+			case SDLK_d:
+				holdingRight = false;
+				break;
+			}
+		}
+		else if (e.type == SDL_MOUSEMOTION)
+		{
+			mouseMoved = true;
+			mMoveX = e.motion.x;
+			mMoveY = e.motion.y;
+		}
+	break;
 	}
+
 	Move(deltaTime);
 
 	GameObject::Update(deltaTime, e);
@@ -81,21 +138,67 @@ void Player::Move(float deltaTime)
 {
 	Vector3D movement;
 
-	if (holdingUp)
+	double sinXRot = sin(rotation.x * DEG2RAD);
+	double cosXRot = cos(rotation.x * DEG2RAD);
+
+	double sinYRot = sin(rotation.y * DEG2RAD);
+	double cosYRot = cos(rotation.y * DEG2RAD);
+
+	double pitchLimitFactor = cosXRot;
+
+	switch (moveType)
 	{
-		movement.z = (movementSpeed*deltaTime)*(-1);
-	}
-	if (holdingDown)
-	{
-		movement.z = movementSpeed*deltaTime;
-	}
-	if (holdingLeft)
-	{
-		movement.x = (movementSpeed*deltaTime)*(-1);
-	}
-	if (holdingRight)
-	{
-		movement.x = movementSpeed*deltaTime;
+	case MV_TOPDOWN:
+		if (holdingUp)
+		{
+			movement.z = (movementSpeed*deltaTime)*(-1);
+		}
+		if (holdingDown)
+		{
+			movement.z = movementSpeed*deltaTime;
+		}
+		if (holdingLeft)
+		{
+			movement.x = (movementSpeed*deltaTime)*(-1);
+		}
+		if (holdingRight)
+		{
+			movement.x = movementSpeed*deltaTime;
+		}
+		break;
+
+	case MV_FPS:
+		if (holdingUp)
+		{
+			movement.x = (movement.x + (sinYRot * pitchLimitFactor));
+			movement.z = (movement.z - (cosYRot * pitchLimitFactor));
+		}
+		if (holdingDown)
+		{
+			movement.x = (movement.x - (sinYRot * pitchLimitFactor));
+			movement.z = (movement.z + (cosYRot * pitchLimitFactor));
+		}
+		if (holdingLeft)
+		{
+			movement.x = movement.x - cosYRot;
+			movement.z = movement.z - sinYRot;
+		}
+		if (holdingRight)
+		{
+			movement.x = movement.x + cosYRot;
+			movement.z = movement.z + sinYRot;
+		}
+		if (mouseMoved)
+		{
+			HandleMouseMove(mMoveX, mMoveY);
+			mouseMoved = false;
+		}
+
+		movement.x *= (movementSpeed*deltaTime);
+		movement.y *= (movementSpeed*deltaTime);
+		movement.z *= (movementSpeed*deltaTime);
+
+		break;
 	}
 
 	// apply the movement to our position
@@ -133,7 +236,6 @@ void Player::Move(float deltaTime)
 		}
 	}
 
-//	if ((position.y > -40 || position.y < 33) || (movement.y > 0 && position.y > -40) || (movement.y < 0 && position.y >33))
 	position.y += movement.y;
 	
 	movement.x = 0;
@@ -159,4 +261,38 @@ void Player::TakeDamage(int damage)
 Sphere* Player::GetBoundingSphere()
 {
 	return GameObject::GetBoundingSphere();
+}
+
+void Player::HandleMouseMove(int mouseX, int mouseY)
+{
+	//Find the distance the mouse has moved since the last frame, and affect
+	//the rotation of the camera by that amount. Reset the mouse to the middle
+	//of the window.
+
+	double horizMovement = (mouseX - windowMidX + 1)*yawSensitivity;
+	double vertMovement = (mouseY - windowMidY)*pitchSensitivity;
+
+	rotation.x = (rotation.x + vertMovement);
+
+	if (rotation.x < -90)
+	{
+		rotation.x = -90;
+	}
+	else if (rotation.x > 90)
+	{
+		rotation.x = 90;
+	}
+
+	rotation.y = (rotation.y + horizMovement);
+
+	if (rotation.y < 0)
+	{
+		rotation.y = (rotation.y + 360);
+	}
+	else if (rotation.y > 360)
+	{
+		rotation.y = (rotation.y - 360);
+	}
+
+	SDL_WarpMouseInWindow(NULL, windowMidX, windowMidY);
 }

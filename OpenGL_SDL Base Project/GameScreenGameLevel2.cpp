@@ -1,10 +1,10 @@
 #include "GameScreenGameLevel2.h"
-
+#include "Camera.h"
 
 GameScreenGameLevel2::GameScreenGameLevel2()
 {
 	level2Player = new Player(MV_FPS);
-	level2Player->SetPosition(Vector3D(0, 0, 0));
+	level2Player->SetPosition(Vector3D(0, 3, 0));
 }
 
 
@@ -21,6 +21,9 @@ void GameScreenGameLevel2::Render()
 void GameScreenGameLevel2::Update(float deltaTime, SDL_Event e)
 {
 	GameScreen::Update(deltaTime, e);
+	mCamera->setPosition(level2Player->GetPosition());
+	mCamera->setRotation(level2Player->GetRotation());
+	level2Player->Update(deltaTime, e);
 }
 
 void GameScreenGameLevel2::DrawGround(float groundLevel)

@@ -16,6 +16,7 @@ public:
 	int GetLives()							{ return lives; }
 	void SetMoveType(MOVEMENT_TYPE value)	{ moveType = value; }
 	MOVEMENT_TYPE GetMoveType()				{ return moveType; }
+	void HandleMouseMove(int mouseX, int mouseY);
 
 	Vector3D GetPlayerPosition()		{ return Vector3D( GameObject::GetPosition().x, GameObject::GetPosition().y, GameObject::GetPosition().z); }
 
@@ -24,6 +25,13 @@ private:
 	bool holdingRight;
 	bool holdingUp;
 	bool holdingDown;
+
+	int mMoveX;
+	int mMoveY;
+	bool mouseMoved;
+
+	int windowMidX;
+	int windowMidY;
 
 	int lives;
 
