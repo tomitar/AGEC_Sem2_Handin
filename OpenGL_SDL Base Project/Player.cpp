@@ -202,42 +202,50 @@ void Player::Move(float deltaTime)
 	}
 
 	// apply the movement to our position
-	//prevent the player from moving off the edge of the screen
-	//only applicable to level 1, put walls for more permanent fix
-	if (position.z > -40 && position.z < 33)
+
+	if (moveType == MV_TOPDOWN)
 	{
-		position.z += movement.z;
-	}		
-	else
-	{
-		if (position.z > -40)
+		if (position.z > -40 && position.z < 33)
 		{
-			position.z = position.z - 0.1f;
+			position.z += movement.z;
 		}
 		else
 		{
-			position.z = position.z + 0.1f;
+			if (position.z > -40)
+			{
+				position.z = position.z - 0.1f;
+			}
+			else
+			{
+				position.z = position.z + 0.1f;
+			}
 		}
+
+		if (position.x > -28 && position.x < 28)
+		{
+			position.x += movement.x;
+		}
+		else
+		{
+			if (position.x > -28)
+			{
+				position.x = position.x - 0.1f;
+			}
+			else
+			{
+				position.x = position.x + 0.1f;
+			}
+		}
+
+		position.y += movement.y;
 	}
-	
-	if (position.x > -28 && position.x < 28)
+	else if (moveType == MV_FPS)
 	{
 		position.x += movement.x;
-	}
-	else
-	{
-		if (position.x > -28)
-		{
-			position.x = position.x - 0.1f;
-		}
-		else
-		{
-			position.x = position.x + 0.1f;
-		}
+		position.y += movement.y;
+		position.z += movement.z;
 	}
 
-	position.y += movement.y;
-	
 	movement.x = 0;
 	movement.y = 0;
 	movement.z = 0;

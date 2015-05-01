@@ -1,10 +1,22 @@
 #include "GameScreenGameLevel2.h"
 #include "Camera.h"
 
+
 GameScreenGameLevel2::GameScreenGameLevel2()
 {
 	level2Player = new Player(MV_FPS);
 	level2Player->SetPosition(Vector3D(0, 3, 0));
+	level2Terrain = new Terrain();
+	level2Terrain->Initialise();
+
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+
+	mLight = {
+		{ 0.0f, 0.0f, 0.0f, 1.0f },
+		{ 0.7f, 0.7f, 0.7f, 1.0f },
+		{ 0.5f, 0.5f, 0.5f, 1.0f }
+	};
 }
 
 
@@ -15,15 +27,30 @@ GameScreenGameLevel2::~GameScreenGameLevel2()
 void GameScreenGameLevel2::Render()
 {
 	GameScreen::Render();
+
+	float light_pos[] = { 0.0f, 50.0f, 0.0f, 1.0f };
+	glLightfv(GL_LIGHT0, GL_AMBIENT, mLight.ambient);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, mLight.diffuse);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, mLight.specular);
+	glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
+	
+	level2Terrain->Render();
 	DrawGround(-1.0f);
 }
 
 void GameScreenGameLevel2::Update(float deltaTime, SDL_Event e)
 {
 	GameScreen::Update(deltaTime, e);
-	mCamera->setPosition(level2Player->GetPosition());
+	mCamera->setPosition(Vector3D(	level2Player->GetPosition().x,
+									level2Player->GetPosition().y +2.0f,
+									level2Player->GetPosition().z));
 	mCamera->setRotation(level2Player->GetRotation());
 	level2Player->Update(deltaTime, e);
+	level2Terrain->Update(deltaTime);
+	level2Player->SetPosition(Vector3D(	level2Player->GetPosition().x,
+										level2Terrain->GetHeight(	level2Player->GetPosition().x,
+																	level2Player->GetPosition().z),
+										level2Player->GetPosition().z));
 }
 
 void GameScreenGameLevel2::DrawGround(float groundLevel)

@@ -7,7 +7,7 @@
 
 #include <iostream>
 using namespace::std;
-lighting mLight;
+
 
 GameScreenGameLevel1::GameScreenGameLevel1()
 {

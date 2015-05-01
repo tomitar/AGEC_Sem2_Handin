@@ -22,4 +22,6 @@ public:
 	Texture* courtTexture;
 
 	GameObject* courtObject;
+
+	lighting mLight;
 };

@@ -1,6 +1,7 @@
 #pragma once
 #include "GameScreen.h"
 #include "Player.h"
+#include "Terrain.h"
 
 class GameScreenGameLevel2 : GameScreen
 {
@@ -11,6 +12,9 @@ public:
 	void		Update(float deltaTime, SDL_Event e);
 
 	Player* level2Player;
+	Terrain* level2Terrain;
+
+	lighting mLight;
 
 	void DrawGround(float groundLevel);
 };
