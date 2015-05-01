@@ -2,6 +2,7 @@
 #include "GameScreen.h"
 #include "Player.h"
 #include "Terrain.h"
+#include "Target.h"
 
 class GameScreenGameLevel2 : GameScreen
 {
@@ -13,6 +14,9 @@ public:
 
 	Player* level2Player;
 	Terrain* level2Terrain;
+
+	std::vector<Target*> theTargets;
+	float targetTime;
 
 	lighting mLight;
 

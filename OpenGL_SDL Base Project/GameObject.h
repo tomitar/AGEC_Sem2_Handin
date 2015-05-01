@@ -24,7 +24,7 @@ protected:
 public:
 
 	//Engine compulsorys
-	GameObject(float startLifePoints, bool startIsDestructable, CollisionType collisionType);
+	GameObject(float startLifePoints, bool startIsDestructable, CollisionType collisionType, ANIMMODE newAnim);
 	~GameObject();
 	void Render();
 	void Update(float deltaTime, SDL_Event e);
@@ -67,9 +67,12 @@ public:
 	void SetHasPhysics(bool value)								{ hasPhysics = value; }
 	void SetCollType(CollisionType value)						{ collType = value; }
 
+	float RandomFloat(float a, float b);
+
 private:
 	Object3DS* objectModel;
 	Sphere* boundingSphere;
 	float radius;
 	CollisionType collType;
+	ANIMMODE animMode;
 };

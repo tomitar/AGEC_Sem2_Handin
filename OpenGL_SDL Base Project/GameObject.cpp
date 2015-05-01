@@ -3,10 +3,8 @@
 #include <iostream>
 using namespace::std;
 
-GameObject::GameObject(float startLifePoints, bool startIsDestructable, CollisionType newCollType)
+GameObject::GameObject(float startLifePoints, bool startIsDestructable, CollisionType newCollType, ANIMMODE newAnim)
 {
-	//debug
-	cout << "GAMEOBJECT constructor" << endl;
 	radius = 2.0f;
 
 	SetIsDestructable(startIsDestructable);
@@ -14,6 +12,7 @@ GameObject::GameObject(float startLifePoints, bool startIsDestructable, Collisio
 	SetMovementSpeed(10);
 	SetHasPhysics(false);
 	collType = newCollType;
+	animMode = newAnim;
 
 	switch (collType)
 	{
@@ -33,15 +32,15 @@ GameObject::~GameObject()
 
 void GameObject::Render()
 {
-	objectModel->render(ANIM_CUSTOM);
-	if (collType == COLLISION_SPHERE)
+	objectModel->render(animMode);
+	/*if (collType == COLLISION_SPHERE)
 	{
 		glPushMatrix();
 		glTranslatef(position.x, position.y, position.z);
 		glColor3f(0.0, 0.0, 0.0);
 		glutWireSphere(boundingSphere->GetBoundingRadius(), 10, 10);
 		glPopMatrix();
-	}
+	}*/
 }
 
 void GameObject::SetModel(Vector3D startpos, string name, bool vis, string texture)
@@ -67,5 +66,13 @@ void GameObject::Update(float deltaTime, SDL_Event e)
 		boundingSphere->SetCollided(false);
 		boundingSphere->Update(position);
 	}
-	objectModel->update(deltaTime, e, ANIM_CUSTOM, position);
+	objectModel->update(deltaTime, e, animMode, position);
+}
+
+float GameObject::RandomFloat(float a, float b)
+{
+	float random = ((float)rand() / (float)RAND_MAX);
+	float diff = b - a;
+	float r = random*diff;
+	return a + r;
 }

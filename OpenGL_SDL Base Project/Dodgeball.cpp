@@ -2,12 +2,12 @@
 #include "Commons.h"
 #include <iostream>
 
-Dodgeball::Dodgeball() : GameObject(0,false,COLLISION_SPHERE)
+Dodgeball::Dodgeball() : GameObject(0,false,COLLISION_SPHERE, ANIM_CUSTOM)
 {
 	SetHasPhysics(true);
 	SetHasHitPlayer(false);
-	SetSpeed(Vector3D(	RandomFloat(-7.0f,7.0f),
-									0.0f,
+	SetSpeed(Vector3D(		RandomFloat(-7.0f,7.0f),
+							0.0f,
 							RandomFloat(-7.0f,7.0f)));
 
 	SetPosition(Vector3D(	RandomFloat(-28.0f, 28.0f),
@@ -60,14 +60,6 @@ void Dodgeball::Render()
 	glutSolidSphere(1, 10, 10);
 	glDisable(GL_COLOR);
 	glPopMatrix();
-}
-
-float Dodgeball::RandomFloat(float a, float b)
-{
-	float random = ((float)rand() / (float)RAND_MAX);
-	float diff = b - a;
-	float r = random*diff;
-	return a + r;
 }
 
 bool Dodgeball::PositionCheck()

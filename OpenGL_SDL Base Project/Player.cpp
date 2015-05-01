@@ -5,7 +5,7 @@
 
 using namespace::std;
 
-Player::Player(MOVEMENT_TYPE newMov) : GameObject(100.0f, true, COLLISION_SPHERE)
+Player::Player(MOVEMENT_TYPE newMov) : GameObject(100.0f, true, COLLISION_SPHERE,ANIM_CUSTOM)
 {
 	SetModel(Vector3D(0.0f, 0.0f, 0.0f), "Tree_1.3ds", true, "Ship_1_Texture.raw");
 	SetMovementSpeed(15);
@@ -100,6 +100,8 @@ void Player::Update(float deltaTime, SDL_Event e)
 			case SDLK_d:
 				holdingRight = true;
 				break;
+			case SDLK_p:
+				cout << GetPosition().x << " " << GetPosition().z << endl;
 			}
 		}
 		else if (e.type == SDL_KEYUP)

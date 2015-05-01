@@ -15,7 +15,7 @@ GameScreenGameLevel1::GameScreenGameLevel1()
 	debugPlayer = new Player(MV_TOPDOWN);
 	debugPlayer->SetPosition(Vector3D(-29, 0, 30));
 
-	courtObject = new GameObject(0.0f, false, COLLISION_NONE);
+	courtObject = new GameObject(0.0f, false, COLLISION_NONE, ANIM_CUSTOM);
 	courtObject->SetModel(Vector3D(0, 0, 0), "Court.3DS", true, "Court.raw");
 
 	//AddObjectToArray(debugPlayer, 0);
@@ -26,9 +26,6 @@ GameScreenGameLevel1::GameScreenGameLevel1()
 
 	SetVictoryFlag(false);
 	timeSinceStart = 0.0f;
-
-	courtTexture = new Texture();
-	courtTexture->Load("Ship_1_Texture.raw", 512, 512);
 
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
