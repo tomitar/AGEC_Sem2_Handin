@@ -1,6 +1,7 @@
 #include "GameScreenGameLevel2.h"
 #include "Camera.h"
-
+#include "Constants.h"
+#include <sstream>
 
 GameScreenGameLevel2::GameScreenGameLevel2()
 {
@@ -10,11 +11,8 @@ GameScreenGameLevel2::GameScreenGameLevel2()
 	level2Terrain->Initialise();
 
 	targetTime = 0.0f;
-
-	for (int i = 0; i < 15; i++)
-	{
-		theTargets.push_back(new Target());
-	}
+	waveNumber = 0;
+	hitTargets = 0;
 
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
@@ -24,6 +22,8 @@ GameScreenGameLevel2::GameScreenGameLevel2()
 		{ 0.7f, 0.7f, 0.7f, 1.0f },
 		{ 0.5f, 0.5f, 0.5f, 1.0f }
 	};
+
+	TargetWave();
 }
 
 
@@ -46,12 +46,28 @@ void GameScreenGameLevel2::Render()
 
 	for (int i = 0; i < theTargets.size(); i++)
 	{
-		theTargets[i]->Render();
+		if (theTargets[i] != NULL)
+		{
+			theTargets[i]->Render();
+		}
 	}
+
+	std::stringstream ss;
+	ss << "WAVE TIME: " << targetTime << "s" << std::endl;
+	PrintStringToScreen(10.0f, 90.0f, ss.str());
+	ss.str(std::string());
+	ss << "WAVE NUMBER: " << waveNumber << std::endl;
+	PrintStringToScreen(10.0f, 95.0f, ss.str());
 }
 
 void GameScreenGameLevel2::Update(float deltaTime, SDL_Event e)
 {
+	targetTime = targetTime - deltaTime;
+	if (targetTime < 0.0f)
+	{
+		SetGameOverFlag(true);
+	}
+
 	GameScreen::Update(deltaTime, e);
 
 	mCamera->setPosition(Vector3D(	level2Player->GetPosition().x,
@@ -67,11 +83,28 @@ void GameScreenGameLevel2::Update(float deltaTime, SDL_Event e)
 
 	for (int i = 0; i < theTargets.size(); i++)
 	{
-		theTargets[i]->Update(deltaTime, e);
-		theTargets[i]->SetPosition(Vector3D(theTargets[i]->GetPosition().x,
-											(level2Terrain->GetHeight(	theTargets[i]->GetPosition().x,
-																		theTargets[i]->GetPosition().z)+5.0f),
-											theTargets[i]->GetPosition().z));
+		if (theTargets[i] != NULL)
+		{
+			theTargets[i]->Update(deltaTime, e);
+			theTargets[i]->SetPosition(Vector3D(theTargets[i]->GetPosition().x,
+				(level2Terrain->GetHeight(theTargets[i]->GetPosition().x,
+				theTargets[i]->GetPosition().z)
+				+ 3.0f),
+				theTargets[i]->GetPosition().z));
+
+			Collision::SphereSphereCollision(theTargets[i]->GetBoundingSphere(), level2Player->GetBoundingSphere());
+			if (theTargets[i]->GetBoundingSphere()->GetCollided() == true)
+			{
+				delete theTargets[i];
+				theTargets[i] = NULL;
+				hitTargets++;
+			}
+		}
+	}
+	
+	if (hitTargets == theTargets.size())
+	{
+		TargetWave();
 	}
 }
 
@@ -96,4 +129,51 @@ void GameScreenGameLevel2::DrawGround(float groundLevel)
 	glEnd();
 
 	glDisable(GL_COLOR);
+}
+
+void GameScreenGameLevel2::TargetWave()
+{
+	int waveTotal;
+
+	for (int i = 0; i < theTargets.size(); i++)
+	{
+		delete theTargets[i];
+		theTargets[i] = NULL;
+	}
+
+	switch (waveNumber)
+	{
+
+	case 0:
+		waveTotal = WAVE_1;
+		for (int i = 0; i < waveTotal; i++)
+		{
+			theTargets.push_back(new Target());
+		}
+		break;
+
+	case 1:
+		waveTotal = WAVE_2;
+		for (int i = 0; i < waveTotal; i++)
+		{
+			theTargets.push_back(new Target());
+		}
+		break;
+
+	case 2:
+		waveTotal = WAVE_3;
+		for (int i = 0; i < waveTotal; i++)
+		{
+			theTargets.push_back(new Target());
+		}
+		break;
+
+	case 3:
+		SetVictoryFlag(true);
+		break;
+	}
+
+	waveNumber++; 
+	targetTime = WAVE_TIME;
+	hitTargets = 0;
 }

@@ -16,3 +16,9 @@
 #define GRAVITY			30.0f
 
 #define MAX_LIFEPOINTS	10.0f;
+
+#define WAVE_1			5;
+#define WAVE_2			15;
+#define WAVE_3			25;
+
+#define WAVE_TIME		60.0f;

@@ -19,6 +19,9 @@ public:
 	float targetTime;
 
 	lighting mLight;
+	int waveNumber;
+	int hitTargets;
 
 	void DrawGround(float groundLevel);
+	void TargetWave();
 };
