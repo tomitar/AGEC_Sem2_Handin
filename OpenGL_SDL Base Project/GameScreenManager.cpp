@@ -93,19 +93,18 @@ void GameScreenManager::Update(float deltaTime, SDL_Event e)
 		totalframes = 0;
 	}
 
-	if (thisScreen == SCREEN_GAMELEVEL1)
+	if (mCurrentScreen->GetGameOverFlag() == true)
 	{
-		if (mCurrentScreen->GetGameOverFlag() == true)
-		{
-			ChangeScreen(SCREEN_GAMEOVER);
-		}
-		if (mCurrentScreen->GetVictoryFlag() == true)
-		{
-			currentScore += mCurrentScreen->GetLevelScore();
-			ChangeScreen(SCREEN_HIGHSCORES);
-			mCurrentScreen->SetLevelScore(currentScore);
-		}
+		currentScore += mCurrentScreen->GetLevelScore();
+		ChangeScreen(SCREEN_GAMEOVER);
 	}
+	else if (mCurrentScreen->GetVictoryFlag() == true)
+	{
+		currentScore += mCurrentScreen->GetLevelScore();
+		ChangeScreen(SCREEN_HIGHSCORES);
+		mCurrentScreen->SetLevelScore(currentScore);
+	}
+
 }
 
 //--------------------------------------------------------------------------------------------------

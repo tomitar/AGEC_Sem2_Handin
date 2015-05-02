@@ -126,6 +126,10 @@ void GameScreenGameLevel1::Update(float deltaTime, SDL_Event e)
 	if (debugPlayer->GetPosition().x > 22 && debugPlayer->GetPosition().z < -33)
 	{
 		SetVictoryFlag(true);
-		SetLevelScore(2000 - timeSinceStart);
+		SetLevelScore(100 - timeSinceStart);
+		if (GetLevelScore() < 0)
+		{
+			SetLevelScore(0.0f);
+		}
 	}
 }

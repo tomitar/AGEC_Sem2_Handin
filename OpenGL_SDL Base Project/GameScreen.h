@@ -33,6 +33,7 @@ public:
 	void SetVictoryFlag(bool value)	{ victoryFlag = value; }
 
 	float GetLevelScore()			{ return levelScore; }
+	void AddLevelScore(float value)	{ levelScore += value; }
 	void SetLevelScore(float value)	{ levelScore = value; }
 
 	void PrintStringToScreen(int xpos, int ypos, string inString);

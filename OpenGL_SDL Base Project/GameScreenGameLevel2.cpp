@@ -52,12 +52,17 @@ void GameScreenGameLevel2::Render()
 		}
 	}
 
+	int targetsLeft = 0;
+	targetsLeft = theTargets.size() - hitTargets;
 	std::stringstream ss;
 	ss << "WAVE TIME: " << targetTime << "s" << std::endl;
 	PrintStringToScreen(10.0f, 90.0f, ss.str());
 	ss.str(std::string());
 	ss << "WAVE NUMBER: " << waveNumber << std::endl;
 	PrintStringToScreen(10.0f, 95.0f, ss.str());
+	ss.str(std::string());
+	ss << "TARGETS LEFT: " << targetsLeft << std::endl;
+	PrintStringToScreen(10.0f, 97.5f, ss.str());
 }
 
 void GameScreenGameLevel2::Update(float deltaTime, SDL_Event e)
@@ -98,6 +103,7 @@ void GameScreenGameLevel2::Update(float deltaTime, SDL_Event e)
 				delete theTargets[i];
 				theTargets[i] = NULL;
 				hitTargets++;
+				AddLevelScore(25.0f);
 			}
 		}
 	}
@@ -133,7 +139,9 @@ void GameScreenGameLevel2::DrawGround(float groundLevel)
 
 void GameScreenGameLevel2::TargetWave()
 {
+	AddLevelScore(50.0f + targetTime);
 	int waveTotal;
+	targetTime = WAVE_TIME;
 
 	for (int i = 0; i < theTargets.size(); i++)
 	{
@@ -146,6 +154,7 @@ void GameScreenGameLevel2::TargetWave()
 
 	case 0:
 		waveTotal = WAVE_1;
+		targetTime *= 1.0f;
 		for (int i = 0; i < waveTotal; i++)
 		{
 			theTargets.push_back(new Target());
@@ -154,6 +163,7 @@ void GameScreenGameLevel2::TargetWave()
 
 	case 1:
 		waveTotal = WAVE_2;
+		targetTime *= 2.0f;
 		for (int i = 0; i < waveTotal; i++)
 		{
 			theTargets.push_back(new Target());
@@ -162,6 +172,7 @@ void GameScreenGameLevel2::TargetWave()
 
 	case 2:
 		waveTotal = WAVE_3;
+		targetTime *= 3.0f;
 		for (int i = 0; i < waveTotal; i++)
 		{
 			theTargets.push_back(new Target());
@@ -170,10 +181,10 @@ void GameScreenGameLevel2::TargetWave()
 
 	case 3:
 		SetVictoryFlag(true);
+		AddLevelScore(200.0f);
 		break;
 	}
 
 	waveNumber++; 
-	targetTime = WAVE_TIME;
 	hitTargets = 0;
 }

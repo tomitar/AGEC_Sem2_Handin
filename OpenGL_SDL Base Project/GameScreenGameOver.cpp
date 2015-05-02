@@ -20,4 +20,14 @@ void GameScreenGameOver::Render()
 void GameScreenGameOver::Update(float deltaTime, SDL_Event e)
 {
 	GameScreen::Update(deltaTime,e);
+
+	if (e.type == SDL_KEYDOWN)
+	{
+		switch (e.key.keysym.sym)
+		{
+		case SDLK_RETURN:
+			SetVictoryFlag(true);
+			break;
+		}
+	}
 }
