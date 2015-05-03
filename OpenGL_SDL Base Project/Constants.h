@@ -22,3 +22,6 @@
 #define WAVE_3			25;
 
 #define WAVE_TIME		60.0f;
+
+#define LV2_MAXBOUNDS	125.0f;
+#define LV2_MINBOUNDS	-125.0f;

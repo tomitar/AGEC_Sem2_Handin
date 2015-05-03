@@ -22,6 +22,7 @@ Player::Player(MOVEMENT_TYPE newMov) : GameObject(100.0f, true, COLLISION_SPHERE
 	SetMoveType(newMov);
 	windowMidX = SCREEN_WIDTH / 2.0f;
 	windowMidY = SCREEN_HEIGHT / 2.0f;
+	myPowerup = PT_NONE;
 
 	if (GetMoveType() == MV_FPS)
 	{
@@ -42,6 +43,16 @@ void Player::Render()
 
 void Player::Update(float deltaTime, SDL_Event e)
 {
+	switch (myPowerup)
+	{
+	case PT_NONE:
+		SetMovementSpeed(15);
+		break; 
+	case PT_SPEED:
+		SetMovementSpeed(30);
+		break;
+	}
+	
 	switch (moveType)
 	{
 	case MV_TOPDOWN:

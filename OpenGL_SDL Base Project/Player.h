@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "SDL_mixer.h"
+#include "Powerup.h"
 
 class Player : public GameObject
 {
@@ -17,6 +18,8 @@ public:
 	void SetMoveType(MOVEMENT_TYPE value)	{ moveType = value; }
 	MOVEMENT_TYPE GetMoveType()				{ return moveType; }
 	void HandleMouseMove(int mouseX, int mouseY);
+	PowerupType GetMyPowerup()					{ return myPowerup; }
+	void SetMyPowerup(PowerupType value)		{ myPowerup = value; }
 
 	Vector3D GetPlayerPosition()		{ return Vector3D( GameObject::GetPosition().x, GameObject::GetPosition().y, GameObject::GetPosition().z); }
 
@@ -34,6 +37,7 @@ private:
 	int windowMidY;
 
 	int lives;
+	PowerupType myPowerup;
 
 	Mix_Chunk *denzilScream;
 	MOVEMENT_TYPE moveType;

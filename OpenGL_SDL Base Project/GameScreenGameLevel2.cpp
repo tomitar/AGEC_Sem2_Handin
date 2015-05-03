@@ -52,6 +52,17 @@ void GameScreenGameLevel2::Render()
 		}
 	}
 
+	for (int i = 0; i < thePowerups.size(); i++)
+	{
+		if (thePowerups[i] != NULL)
+		{
+			if (thePowerups[i]->GetHasActive() == false)
+			{
+				thePowerups[i]->Render();
+			}
+		}
+	}
+
 	int targetsLeft = 0;
 	targetsLeft = theTargets.size() - hitTargets;
 	std::stringstream ss;
@@ -63,10 +74,50 @@ void GameScreenGameLevel2::Render()
 	ss.str(std::string());
 	ss << "TARGETS LEFT: " << targetsLeft << std::endl;
 	PrintStringToScreen(10.0f, 97.5f, ss.str());
+	if (level2Player->GetMyPowerup() != NULL)
+	{
+		ss.str(std::string());
+		ss << "POWERUP: " << level2Player->GetMyPowerup() << std::endl;
+		PrintStringToScreen(10.0f, 30.5f, ss.str());
+	}
 }
 
 void GameScreenGameLevel2::Update(float deltaTime, SDL_Event e)
 {
+	for (int i = 0; i < thePowerups.size(); i++)
+	{
+		if (thePowerups[i] != NULL)
+		{
+			thePowerups[i]->Update(deltaTime, e);
+
+			if (thePowerups[i]->GetHasActive() == false)
+			{
+				thePowerups[i]->SetPosition(Vector3D(thePowerups[i]->GetPosition().x,
+					(level2Terrain->GetHeight(thePowerups[i]->GetPosition().x,
+					thePowerups[i]->GetPosition().z)
+					+ 3.0f),
+					thePowerups[i]->GetPosition().z));
+
+				Collision::SphereSphereCollision(thePowerups[i]->GetBoundingSphere(), level2Player->GetBoundingSphere());
+
+				if (thePowerups[i]->GetBoundingSphere()->GetCollided() == true)
+				{
+					level2Player->SetMyPowerup(thePowerups[i]->GetPType());
+					thePowerups[i]->SetHasActive(true);
+				}
+			}
+			else
+			{
+				if (thePowerups[i]->GetHasFinished() == true)
+				{
+					delete thePowerups[i];
+					thePowerups[i] = NULL;
+					level2Player->SetMyPowerup(PT_NONE);
+				}
+			}
+		}
+	}
+
 	targetTime = targetTime - deltaTime;
 	if (targetTime < 0.0f)
 	{
@@ -149,6 +200,12 @@ void GameScreenGameLevel2::TargetWave()
 		theTargets[i] = NULL;
 	}
 
+	for (int i = 0; i < thePowerups.size(); i++)
+	{
+		delete thePowerups[i];
+		thePowerups[i] = NULL;
+	}
+
 	switch (waveNumber)
 	{
 
@@ -187,4 +244,9 @@ void GameScreenGameLevel2::TargetWave()
 
 	waveNumber++; 
 	hitTargets = 0;
+
+	for (int i = 0; i < 3; i++)
+	{
+		thePowerups.push_back(new Powerup());
+	}
 }
