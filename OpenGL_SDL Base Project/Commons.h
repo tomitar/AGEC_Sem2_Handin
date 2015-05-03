@@ -173,3 +173,9 @@ typedef enum CollisionType
 	COLLISION_SPHERE,
 	COLLISION_CUBE
 };
+
+typedef enum PowerupType
+{
+	PT_NONE = 0,
+	PT_SPEED
+};
