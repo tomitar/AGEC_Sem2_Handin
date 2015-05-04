@@ -4,13 +4,16 @@
 
 
 class Sphere {
+
 public:
-	Sphere(Vector3D c, float r) { centre = c; radius = r; collided = false; }
-	float GetBoundingRadius() const { return radius; }
-	Vector3D GetCentre()  { return centre; }
-	void Update(Vector3D newPos) { centre = newPos; }
-	void SetCollided(bool c) { collided = c; }
-	bool GetCollided()  { return collided; }
+
+	Sphere(Vector3D c, float r)			{ centre = c; radius = r; collided = false; }
+	float GetBoundingRadius()			const { return radius; }
+	Vector3D GetCentre()				{ return centre; }
+	void Update(Vector3D newPos)		{ centre = newPos; }
+	void SetCollided(bool c)			{ collided = c; }
+	bool GetCollided()					{ return collided; }
+
 private:
 	Vector3D centre;
 	float radius;

@@ -8,19 +8,20 @@ class Dodgeball : GameObject
 public:
 	Dodgeball();
 	~Dodgeball();
-	void Update(float deltaTime, SDL_Event e);
-	void Render();
 
-	bool PositionCheck();
+	void	Update(float deltaTime, SDL_Event e);
+	void	Render();
+
+	bool	PositionCheck();
 	Sphere* GetBoundingSphere();
 
-	void SetHasHitPlayer(bool value);
-	bool GetHasHitPlayer()					{ return HasHitPlayer; }
+	void	SetHasHitPlayer(bool value);
+	bool	GetHasHitPlayer()					{ return HasHitPlayer; }
 
-	void SetParentPlayer(Player* value)		{ ParentPlayer = value; }
-	Player* GetParentPlayer()				{ return ParentPlayer; }
+	void	SetParentPlayer(Player* value)		{ ParentPlayer = value; }
+	Player* GetParentPlayer()					{ return ParentPlayer; }
 
-	void SetPositionOffset(Vector3D value)	{ positionOffset = value; }
+	void	SetPositionOffset(Vector3D value)	{ positionOffset = value; }
 
 private:
 	bool HasHitPlayer;

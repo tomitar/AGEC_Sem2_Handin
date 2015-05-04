@@ -33,14 +33,6 @@ GameObject::~GameObject()
 void GameObject::Render()
 {
 	objectModel->render(animMode);
-	/*if (collType == COLLISION_SPHERE)
-	{
-		glPushMatrix();
-		glTranslatef(position.x, position.y, position.z);
-		glColor3f(0.0, 0.0, 0.0);
-		glutWireSphere(boundingSphere->GetBoundingRadius(), 10, 10);
-		glPopMatrix();
-	}*/
 }
 
 void GameObject::SetModel(Vector3D startpos, string name, bool vis, string texture)

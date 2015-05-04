@@ -19,7 +19,6 @@ public:
 	float		getMaxHeight();
 	float		GetHeight(int x, int z);
 
-	void		GenerateNormals();
 	unsigned char h(int x, int y);
 
 	material tMaterial;

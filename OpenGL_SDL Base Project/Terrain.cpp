@@ -12,13 +12,6 @@ Terrain::Terrain()
 		{ 1.0f, 1.0f, 1.0f, 1.0f },
 		100.0f
 	};
-
-	wMaterial = {
-		{ 0.1f, 0.1f, 0.8f },
-		{ 0.1f, 0.1f, 0.8f },
-		{ 1.0f, 1.0f, 1.0f, 1.0f },
-		100.0f
-	};
 }
 
 //-----------------------------------------------------------------------------------------------
@@ -43,8 +36,6 @@ bool Terrain::Initialise()
 	waterHeight = 2.0f;
 	isRising = true;
 	maxHeight = getMaxHeight();
-
-	GenerateNormals();
 
 	return true;
 }
@@ -78,36 +69,6 @@ float Terrain::getMaxHeight()
 		}
 	}
 	return topHeight;
-}
-
-//-----------------------------------------------------------------------------------------------
-
-void Terrain::GenerateNormals()
-{
-	for (unsigned int y = 0; y<TERRAIN_SIZE-1; ++y)
-	{
-		for (unsigned int x = 0; x<TERRAIN_SIZE; ++x)
-		{
-			// The ? : and ifs are necessary for the border cases.
-
-			float sx = h(x<TERRAIN_SIZE - 1 ? x + 1 : x, y) - h(x ? x - 1 : x, y);
-			if (x == 0 || x == TERRAIN_SIZE - 1)
-				sx *= 2;
-
-			float sy = h(x, y<TERRAIN_SIZE - 1 ? y + 1 : y) - h(x, y ? y - 1 : y);
-			if (y == 0 || y == TERRAIN_SIZE - 1)
-				sy *= 2;
-
-			normals[y*TERRAIN_SIZE + x] = { -sx*SCALE_FACTOR, 2 * SCALE_FACTOR, sy*SCALE_FACTOR };
-			double vectorMagnitude = ((normals[y*TERRAIN_SIZE + x].x*normals[y*TERRAIN_SIZE + x].x) + (normals[y*TERRAIN_SIZE + x].y*normals[y*TERRAIN_SIZE + x].y) + (normals[y*TERRAIN_SIZE + x].z*normals[y*TERRAIN_SIZE + x].z));
-			if (vectorMagnitude != 0)
-			{
-				normals[y*TERRAIN_SIZE + x].x /= vectorMagnitude;
-				normals[y*TERRAIN_SIZE + x].y /= vectorMagnitude;
-				normals[y*TERRAIN_SIZE + x].z /= vectorMagnitude;
-			}
-		}
-	}
 }
 
 //-----------------------------------------------------------------------------------------------
@@ -156,8 +117,6 @@ void Terrain::Render()
 			}
 			glMaterialfv(GL_FRONT, GL_DIFFUSE, tMaterial.diffuse);
 
-			//glTexCoord2f((GLfloat)x/TERRAIN_SIZE*8, (GLfloat)z/TERRAIN_SIZE*8);
-			//glNormal3f(normals[z*TERRAIN_SIZE + x].x, normals[z*TERRAIN_SIZE + x].y, normals[z*TERRAIN_SIZE + x].z);
 			glVertex3f(static_cast<GLfloat>(x - TERRAIN_SIZE/2), scaledHeight, static_cast<GLfloat>(z - TERRAIN_SIZE/2));
 
 			if ((((heightmap[(z+1) * TERRAIN_SIZE + x]) / maxHeight) / SCALE_FACTOR) > 1.0f)
@@ -181,37 +140,11 @@ void Terrain::Render()
 			
 			glMaterialfv(GL_FRONT, GL_DIFFUSE, tMaterial.diffuse);
 
-			//glTexCoord2f((GLfloat)x/TERRAIN_SIZE*8, (GLfloat)(z+1)/TERRAIN_SIZE*8);
-			//glNormal3f(normals[(z+1)*TERRAIN_SIZE + x].x, normals[(z+1)*TERRAIN_SIZE + x].y, normals[(z+1)*TERRAIN_SIZE + x].z);
 			glVertex3f(static_cast<GLfloat>(x - TERRAIN_SIZE/2), nextScaledHeight, static_cast<GLfloat>(z + 1 - TERRAIN_SIZE/2));
 		}
 		glEnd();
 	}
 
-	//draw the water
-	//Load water material
-	/*glMaterialfv(GL_FRONT, GL_AMBIENT, wMaterial.ambient);
-	glMaterialfv(GL_FRONT, GL_DIFFUSE, wMaterial.diffuse);
-	glMaterialfv(GL_FRONT, GL_SPECULAR, wMaterial.specular);
-	glMaterialf(GL_FRONT, GL_SHININESS, wMaterial.shininess);
-
-	glPolygonMode(GL_FRONT, GL_FILL);
-
-	glBegin(GL_QUADS);
-		glTexCoord2f(0.0, 0.0);
-		glVertex3f(-TERRAIN_SIZE/2.1f, waterHeight, TERRAIN_SIZE/2.1f);
-
-		glTexCoord2f(TERRAIN_SIZE/4.0f, 0.0);
-		glVertex3f(TERRAIN_SIZE/2.1f, waterHeight, TERRAIN_SIZE/2.1f);
-
-		glTexCoord2f(TERRAIN_SIZE/4.0f, TERRAIN_SIZE/4.0f);
-		glVertex3f(TERRAIN_SIZE/2.1f, waterHeight, -TERRAIN_SIZE/2.1f);
-
-		glTexCoord2f(0.0, TERRAIN_SIZE/4.0f);
-		glVertex3f(-TERRAIN_SIZE/2.1f, waterHeight, -TERRAIN_SIZE/2.1f);
-	glEnd();
-
-	glPopMatrix();*/
 }
 
 //-----------------------------------------------------------------------------------------------
@@ -242,6 +175,5 @@ void Terrain::Update(float deltaTime)
 
 float Terrain::GetHeight(int x, int z)
 {
-	//heightmap[z * TERRAIN_SIZE + x] / SCALE_FACTOR;
 	return heightmap[((z + TERRAIN_SIZE / 2)*TERRAIN_SIZE+(x + TERRAIN_SIZE / 2))]/SCALE_FACTOR;
 }

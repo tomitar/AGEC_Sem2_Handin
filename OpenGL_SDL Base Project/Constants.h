@@ -9,9 +9,8 @@
 
 //Terrain
 #define TERRAIN_SIZE	260
-//#define WATER_HEIGHT	2.0f	//have made a dynamic value in the class.
 #define MAX_HEIGHT		30.0f
-#define SCALE_FACTOR	12.0f				//4.25f//8.5f//16.0f
+#define SCALE_FACTOR	12.0f//4.25f//8.5f//16.0f
 
 #define GRAVITY			30.0f
 

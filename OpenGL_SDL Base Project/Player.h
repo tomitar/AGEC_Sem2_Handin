@@ -11,13 +11,17 @@ public:
 	void Update(float deltaTime, SDL_Event e);
 	void Render();
 	void Move(float deltaTime);
+
 	Sphere* GetBoundingSphere();
 	void TakeDamage(int damage);
 	void SetLives(int value)				{ lives = value; }
 	int GetLives()							{ return lives; }
+
 	void SetMoveType(MOVEMENT_TYPE value)	{ moveType = value; }
 	MOVEMENT_TYPE GetMoveType()				{ return moveType; }
+
 	void HandleMouseMove(int mouseX, int mouseY);
+
 	PowerupType GetMyPowerup()					{ return myPowerup; }
 	void SetMyPowerup(PowerupType value)		{ myPowerup = value; }
 

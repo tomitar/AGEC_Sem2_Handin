@@ -46,13 +46,6 @@ void GameScreen::Update(float deltaTime, SDL_Event e)
 
 //--------------------------------------------------------------------------------------------------
 
-void GameScreen::ClearArrayLocation(int arrayIndex)
-{
-	gameObjectArray[arrayIndex] = NULL;
-}
-
-//--------------------------------------------------------------------------------------------------
-
 void GameScreen::PrintStringToScreen(int xpos, int ypos, string inString)
 {
 	glMatrixMode(GL_MODELVIEW);

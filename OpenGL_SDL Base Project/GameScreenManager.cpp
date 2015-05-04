@@ -1,8 +1,5 @@
 #include "GameScreenManager.h"
 #include "GameScreen.h"
-#include "GameScreenLevel1.h"
-#include "GameScreenLevel2.h"
-#include "GameScreenLevel3.h"
 #include "GameScreenMenu.h"
 #include "GameScreenGameLevel1.h"
 #include "GameScreenGameLevel2.h"
@@ -51,15 +48,6 @@ void GameScreenManager::Update(float deltaTime, SDL_Event e)
 	{
 		switch (e.key.keysym.sym)
 		{
-		case SDLK_1:
-			ChangeScreen(SCREEN_LEVEL1);
-			break;
-		case SDLK_2:
-			ChangeScreen(SCREEN_LEVEL2);
-			break;
-		case SDLK_3:
-			ChangeScreen(SCREEN_LEVEL3);
-			break;
 		case SDLK_RETURN:
 			switch (thisScreen)
 			{
@@ -117,9 +105,6 @@ void GameScreenManager::ChangeScreen(SCREENS newScreen)
 		delete mCurrentScreen;
 	}
 
-	GameScreenLevel1* tempScreen1;
-	GameScreenLevel2* tempScreen2;
-	GameScreenLevel3* tempScreen3;
 	GameScreenMenu* tempScreenMenu;
 	GameScreenGameLevel1* tempScreenLevel1;
 	GameScreenGameLevel2* tempScreenLevel2;
@@ -137,27 +122,6 @@ void GameScreenManager::ChangeScreen(SCREENS newScreen)
 			mCurrentScreen = (GameScreen*)tempScreenMenu;
 			tempScreenMenu = NULL;
 			thisScreen = SCREEN_MENU;
-		break;
-
-		case SCREEN_LEVEL1:
-			tempScreen1 = new GameScreenLevel1();
-			mCurrentScreen = (GameScreen*)tempScreen1;
-			tempScreen1 = NULL;
-			thisScreen = SCREEN_LEVEL1;
-		break;
-
-		case SCREEN_LEVEL2:
-			tempScreen2 = new GameScreenLevel2();
-			mCurrentScreen = (GameScreen*)tempScreen2;
-			tempScreen2 = NULL;
-			thisScreen = SCREEN_LEVEL2;
-		break;
-
-		case SCREEN_LEVEL3:
-			tempScreen3 = new GameScreenLevel3();
-			mCurrentScreen = (GameScreen*)tempScreen3;
-			tempScreen3 = NULL;
-			thisScreen = SCREEN_LEVEL3;
 		break;
 
 		case SCREEN_GAMELEVEL1:
@@ -220,18 +184,6 @@ void GameScreenManager::DrawHUD(string inString)
 
 	switch (thisScreen)
 	{
-		case SCREEN_LEVEL1:
-			line2 = "CURRENT SCREEN: TERRAIN & INPUT SHOWCASE";
-		break;
-
-		case SCREEN_LEVEL2:
-			line2 = "CURRENT SCREEN: WIREFRAME & ANIMATION SHOWCASE";
-		break;
-
-		case SCREEN_LEVEL3:
-			line2 = "CURRENT SCREEN: LEVEL3";
-		break;
-
 		case SCREEN_MENU:
 			line2 = "CURRENT SCREEN: MENU / SPLASH";
 		break;
@@ -242,6 +194,10 @@ void GameScreenManager::DrawHUD(string inString)
 
 		case SCREEN_GAMELEVEL2:
 			line2 = "CURRENT SCREEN: GAME LEVEL TWO";
+		break;
+
+		case SCREEN_HIGHSCORES:
+			line2 = "CURRENT SCREEN: SCORES";
 		break;
 	}
 

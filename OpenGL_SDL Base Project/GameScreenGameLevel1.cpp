@@ -50,8 +50,7 @@ void GameScreenGameLevel1::Render()
 {
 	GameScreen::Render();
 	float light_pos[] = { 0.0f, 50.0f, 0.0f, 1.0f };
-	//float light_pos[] = { 0.0f, 20.0f, 0.0f, 1.0f };
-
+	
 	glLightfv(GL_LIGHT0, GL_AMBIENT, mLight.ambient);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, mLight.diffuse);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, mLight.specular);

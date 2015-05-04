@@ -181,22 +181,7 @@ bool Update()
 	//Get the events.
 	SDL_PollEvent(&e);
 
-	//Handle any events.
-	switch(e.type)
-	{
-		//Click the 'X' or press 'ESC' to quit.
-		case SDLK_q:
-			return true;
-		break;
-		
-		case SDL_QUIT:
-			return true;
-		break;
-
-		default:
-			gameScreenManager->Update((float)(newTime-gOldTime)/1000.0f, e);
-		break;
-	}
+	gameScreenManager->Update((float)(newTime - gOldTime) / 1000.0f, e);
 
 	gOldTime = newTime;
 
