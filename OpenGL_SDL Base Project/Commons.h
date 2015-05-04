@@ -43,46 +43,6 @@ enum ANIMMODE
 	ANIM_CUSTOM
 };
 
-enum FACING
-{
-	FACING_LEFT = 0,
-	FACING_RIGHT
-};
-
-struct Rect2D
-{
-	float x;
-	float y;
-	float width;
-	float height;
-
-	Rect2D(float initialX, float initialY, float initialWidth, float initialHeight)
-	{
-		x = initialX;
-		y = initialY;
-		width  = initialWidth;
-		height = initialHeight;
-	}
-};
-
-struct Vector2D
-{
-	float x;
-	float y;
-
-	Vector2D()
-	{
-		x = 0.0f;
-		y = 0.0f;
-	}
-
-	Vector2D(float initialX, float initialY)
-	{
-		x = initialX;
-		y = initialY;
-	}
-};
-
 struct Vector3D
 {
 	float x;
